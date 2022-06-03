@@ -3,10 +3,11 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "1.6.20"
     `java-library`
+    `maven-publish`
 }
 
-//group = "com.github.mmolosay"
-//version = "1.0-SNAPSHOT"
+group = "com.github.mmolosay"
+version = "1.0-SNAPSHOT"
 
 allprojects {
     repositories {
