@@ -1,9 +1,9 @@
-@file:Suppress("unused")
+package com.mmolosay.resource
 
-import Resource.Empty
-import Resource.Loading
-import Resource.Success
-import Resource.Failure
+import com.mmolosay.resource.Resource.Empty
+import com.mmolosay.resource.Resource.Loading
+import com.mmolosay.resource.Resource.Success
+import com.mmolosay.resource.Resource.Failure
 
 /*
  * Extension functions for 'Resource' instances.

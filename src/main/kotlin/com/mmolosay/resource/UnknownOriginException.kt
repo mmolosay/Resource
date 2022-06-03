@@ -1,3 +1,5 @@
+package com.mmolosay.resource
+
 /**
  * [RuntimeException] the origin of which is unknown.
  *

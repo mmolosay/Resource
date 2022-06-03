@@ -1,3 +1,5 @@
+package com.mmolosay.resource
+
 /**
  * Represents state of dynamically obtained data.
  * It's either [Empty], [Loading], [Success] or [Failure] instance.
