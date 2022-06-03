@@ -1,9 +1,7 @@
-package com.leverx.base.util.struct
-
-import com.leverx.base.util.struct.Resource.Empty
-import com.leverx.base.util.struct.Resource.Failure
-import com.leverx.base.util.struct.Resource.Loading
-import com.leverx.base.util.struct.Resource.Success
+import Resource.Empty
+import Resource.Loading
+import Resource.Success
+import Resource.Failure
 
 /**
  * Represents obtainable resource, that could be consumed by UI.
