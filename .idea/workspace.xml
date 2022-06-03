@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="42931384-6724-4a94-ad7f-0d1550a7ee39" name="Changes" comment="Refine KDoc">
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ResourceExt.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ResourceExt.kt" afterDir="false" />
+    <list default="true" id="42931384-6724-4a94-ad7f-0d1550a7ee39" name="Changes" comment="Get rid of explicit definition of 'Resource' type as non-nullable">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,7 +270,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654259831194</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Get rid of explicit definition of 'Resource' type as non-nullable">
+      <created>1654259899571</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1654259899572</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -292,7 +300,8 @@
     <MESSAGE value="Extract extension functions into individual files" />
     <MESSAGE value="Refine extension functions and add KDoc" />
     <MESSAGE value="Refine KDoc" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refine KDoc" />
+    <MESSAGE value="Get rid of explicit definition of 'Resource' type as non-nullable" />
+    <option name="LAST_COMMIT_MESSAGE" value="Get rid of explicit definition of 'Resource' type as non-nullable" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
