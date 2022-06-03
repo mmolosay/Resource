@@ -26,10 +26,10 @@ tasks.withType<KotlinCompile> {
 
 publishing {
     publications {
-        register("mavenJava", MavenPublication::class) {
+        create<MavenPublication>("maven") {
             groupId = "com.github.mmolosay"
             artifactId = "resource"
-//            version = ""
+            version = "1.0.0"
             from(components["java"])
         }
     }
