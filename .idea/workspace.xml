@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="42931384-6724-4a94-ad7f-0d1550a7ee39" name="Changes" comment="Extract extension functions into individual files">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/UnknownOriginException.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="42931384-6724-4a94-ad7f-0d1550a7ee39" name="Changes" comment="Refine extension functions and add KDoc">
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Resource.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Resource.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ResourceCompanionExt.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ResourceCompanionExt.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ResourceExt.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ResourceExt.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -259,7 +255,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654256989103</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Refine extension functions and add KDoc">
+      <created>1654259258334</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1654259258334</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -280,7 +283,8 @@
     <MESSAGE value="Customize 'publishing' section" />
     <MESSAGE value="Get rid of package and refine imports" />
     <MESSAGE value="Extract extension functions into individual files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Extract extension functions into individual files" />
+    <MESSAGE value="Refine extension functions and add KDoc" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refine extension functions and add KDoc" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
