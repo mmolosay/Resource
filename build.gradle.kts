@@ -23,3 +23,14 @@ dependencies {
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
 }
+
+publishing {
+    publications {
+        register("mavenJava", MavenPublication::class) {
+            groupId = "com.github.mmolosay"
+            artifactId = "resource"
+//            version = ""
+            from(components["java"])
+        }
+    }
+}
