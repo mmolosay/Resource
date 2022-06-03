@@ -11,22 +11,44 @@ import Resource.Failure
 
 // region Creators
 
+/**
+ * Returns [Empty] instance.
+ */
 fun <V> Resource.Companion.empty(): Resource<V> =
     Empty
 
+/**
+ * Returns [Loading] instance.
+ */
 fun <V> Resource.Companion.loading(): Resource<V> =
     Loading
 
+/**
+ * Returns new [Success] instance.
+ */
 fun <V> Resource.Companion.success(value: V): Resource<V> =
     Success(value)
 
-fun <V, P> Resource.Companion.failure(payload: P?, cause: Throwable): Resource<V> =
-    Failure(payload, cause)
+/**
+ * Returns new [Failure] instance.
+ */
+fun <V, P> Resource.Companion.failure(
+    cause: Throwable,
+    payload: P?
+): Resource<V> =
+    Failure(cause, payload)
 
+/**
+ * Returns new [Failure] instance without [Failure.payload].
+ */
 fun <V> Resource.Companion.failure(cause: Throwable): Resource<V> =
-    Failure(payload = null, cause)
+    Failure<Nothing>(cause)
 
+/**
+ * Returns new [Failure] instance without [Failure.payload].
+ * [Failure.cause] will be a [UnknownOriginException] with [cause] as its message.
+ */
 fun <V> Resource.Companion.failure(cause: String): Resource<V> =
-    Failure(payload = null, Failure.MessageException(cause))
+    Failure<Nothing>(UnknownOriginException(cause))
 
-//
+// endregion

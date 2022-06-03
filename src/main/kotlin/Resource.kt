@@ -1,16 +1,34 @@
 /**
- * Represents obtainable resource, that could be consumed by UI.
- * The `Resource` is either [Empty], [Loading], [Success] or [Failure] instance.
+ * Represents state of dynamically obtained data.
+ * It's either [Empty], [Loading], [Success] or [Failure] instance.
+ *
+ * Example of usage:
+ * ```
+ * val observable = SomeObservable<Resource<YourData>>()
+ * observable.value = Resource.Empty
+ * getData { data ->
+ *     observable.value = Resource.Success(data)
+ * }
+ * ...
+ * ...
+ * observable.observe { resource ->
+ *     resource.fold(...)
+ * }
+ * ```
+ *
+ * @param V the type of data. Resource is covariant in its data type.
  */
 sealed class Resource<out V> {
 
     /**
-     * Represents empty, unset value. It may was cleared, or was never set.
+     * Represents empty, unset value.
+     * It may was cleared, or was never set.
      */
     object Empty : Resource<Nothing>()
 
     /**
      * Represents loading state.
+     * There is a high probability, that some other state will be set in observable future.
      */
     object Loading : Resource<Nothing>()
 
@@ -22,19 +40,12 @@ sealed class Resource<out V> {
     class Success<out V>(val value: V) : Resource<V>()
 
     /**
-     * Represents failure, occured while obtaining resource. [payload] can be string message,
-     * int code or anything else. Any [Throwable] set can be obtainded from [cause].
+     * Represents failure, occurred while obtaining resource.
      *
-     * @param payload some useful data.
      * @param cause [Throwable] caught.
+     * @param payload some useful data, like int code or string message.
      */
-    class Failure<out P>(
-        val payload: P?,
-        val cause: Throwable
-    ) : Resource<Nothing>() {
-
-        class MessageException(msg: String) : Throwable(msg)
-    }
+    class Failure<out P>(val cause: Throwable, val payload: P? = null) : Resource<Nothing>()
 
     val isEmpty: Boolean
         get() = (this is Empty)

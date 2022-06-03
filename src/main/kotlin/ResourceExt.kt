@@ -56,6 +56,17 @@ inline fun <V : Any, R> Resource<V>.ifSuccess(action: (value: V) -> R): R? {
 }
 
 /**
+ * Returns result of executing specified [action], if receiver [Resource] is an instance of
+ * [Loading] class, or `null` otherwise
+ */
+inline fun <V : Any, R> Resource<V>.ifFailure(action: () -> R): R? {
+    return when (this) {
+        is Loading -> action()
+        else -> null
+    }
+}
+
+/**
  * Invokes one of specified callbacks on receiver [Resource] depending on
  * its actual instance.
  */
