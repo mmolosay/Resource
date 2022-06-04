@@ -29,7 +29,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "com.github.mmolosay"
             artifactId = "resource"
-            version = "1.0.2"
+            version = "1.0.3"
             from(components["java"])
         }
     }

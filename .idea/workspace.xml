@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="42931384-6724-4a94-ad7f-0d1550a7ee39" name="Changes" comment="Extract instance checking properties into 'ResourceExt'">
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/mmolosay/resource/util/UnknownOriginException.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/mmolosay/resource/util/UnknownOriginException.kt" afterDir="false" />
+    <list default="true" id="42931384-6724-4a94-ad7f-0d1550a7ee39" name="Changes" comment="Refine KDoc">
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -323,7 +323,21 @@
       <option name="project" value="LOCAL" />
       <updated>1654344343615</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Refine KDoc">
+      <created>1654344453191</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1654344453191</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Refine KDoc">
+      <created>1654344638183</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1654344638183</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -350,9 +364,9 @@
     <MESSAGE value="Move 'UnknownOriginException' into 'util' package" />
     <MESSAGE value="Move resource extensions into 'ext' package" />
     <MESSAGE value="Update file packages" />
-    <MESSAGE value="Refine KDoc" />
     <MESSAGE value="Extract instance checking properties into 'ResourceExt'" />
-    <option name="LAST_COMMIT_MESSAGE" value="Extract instance checking properties into 'ResourceExt'" />
+    <MESSAGE value="Refine KDoc" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refine KDoc" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
