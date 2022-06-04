@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="42931384-6724-4a94-ad7f-0d1550a7ee39" name="Changes" comment="Refine KDoc">
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-    </list>
+    <list default="true" id="42931384-6724-4a94-ad7f-0d1550a7ee39" name="Changes" comment="Update Maven publication version" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -337,7 +335,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654344638183</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Update Maven publication version">
+      <created>1654347131368</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1654347131368</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -360,13 +365,13 @@
     <MESSAGE value="Extract extension functions into individual files" />
     <MESSAGE value="Refine extension functions and add KDoc" />
     <MESSAGE value="Get rid of explicit definition of 'Resource' type as non-nullable" />
-    <MESSAGE value="Update Maven publication version" />
     <MESSAGE value="Move 'UnknownOriginException' into 'util' package" />
     <MESSAGE value="Move resource extensions into 'ext' package" />
     <MESSAGE value="Update file packages" />
     <MESSAGE value="Extract instance checking properties into 'ResourceExt'" />
     <MESSAGE value="Refine KDoc" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refine KDoc" />
+    <MESSAGE value="Update Maven publication version" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update Maven publication version" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
