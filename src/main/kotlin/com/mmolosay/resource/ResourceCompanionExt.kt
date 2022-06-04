@@ -4,6 +4,7 @@ import com.mmolosay.resource.Resource.Empty
 import com.mmolosay.resource.Resource.Loading
 import com.mmolosay.resource.Resource.Success
 import com.mmolosay.resource.Resource.Failure
+import com.mmolosay.resource.util.UnknownOriginException
 
 /*
  * Extension functions for 'Resource' companion object.
