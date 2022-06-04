@@ -1,5 +1,6 @@
-package com.mmolosay.resource
+package com.mmolosay.resource.ext
 
+import com.mmolosay.resource.Resource
 import com.mmolosay.resource.Resource.Empty
 import com.mmolosay.resource.Resource.Loading
 import com.mmolosay.resource.Resource.Success
