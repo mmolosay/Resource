@@ -80,7 +80,7 @@ inline fun <V, R> Resource<V>.ifFailure(action: () -> R): R? {
  * Invokes one of specified callbacks on receiver [Resource] depending on
  * its actual instance.
  */
-inline fun <V> Resource<V>.fold(
+inline fun <V> Resource<V>.invoke(
     onEmpty: (() -> Unit) = {},
     onLoading: (() -> Unit) = {},
     onSuccess: ((value: V) -> Unit) = {},
