@@ -4,17 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="42931384-6724-4a94-ad7f-0d1550a7ee39" name="Changes" comment="Update Maven publication version">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/mmolosay/resource/Resource.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/mmolosay/resource/ResourceCompanionExt.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/mmolosay/resource/ResourceExt.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/mmolosay/resource/UnknownOriginException.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Resource.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ResourceCompanionExt.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ResourceExt.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/UnknownOriginException.kt" beforeDir="false" />
+    <list default="true" id="42931384-6724-4a94-ad7f-0d1550a7ee39" name="Changes" comment="Extract instance checking properties into 'ResourceExt'">
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/mmolosay/resource/util/UnknownOriginException.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/mmolosay/resource/util/UnknownOriginException.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +69,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2A3pvaseA2N8aWDVEFpRZmCAsHr" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -95,6 +88,9 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\mikhail.malasai\IdeaProjects\resource\src\main\kotlin" />
+    </key>
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.mmolosay.resource.util" />
     </key>
   </component>
   <component name="RunManager" selected="Gradle.resource [publishToMavenLocal]">
@@ -292,7 +288,42 @@
       <option name="project" value="LOCAL" />
       <updated>1654260305071</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Move 'UnknownOriginException' into 'util' package">
+      <created>1654344122531</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1654344122531</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Move resource extensions into 'ext' package">
+      <created>1654344157611</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1654344157611</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Update file packages">
+      <created>1654344207000</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1654344207000</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Refine KDoc">
+      <created>1654344283048</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1654344283048</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Extract instance checking properties into 'ResourceExt'">
+      <created>1654344343614</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1654344343615</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -314,10 +345,14 @@
     <MESSAGE value="Get rid of package and refine imports" />
     <MESSAGE value="Extract extension functions into individual files" />
     <MESSAGE value="Refine extension functions and add KDoc" />
-    <MESSAGE value="Refine KDoc" />
     <MESSAGE value="Get rid of explicit definition of 'Resource' type as non-nullable" />
     <MESSAGE value="Update Maven publication version" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update Maven publication version" />
+    <MESSAGE value="Move 'UnknownOriginException' into 'util' package" />
+    <MESSAGE value="Move resource extensions into 'ext' package" />
+    <MESSAGE value="Update file packages" />
+    <MESSAGE value="Refine KDoc" />
+    <MESSAGE value="Extract instance checking properties into 'ResourceExt'" />
+    <option name="LAST_COMMIT_MESSAGE" value="Extract instance checking properties into 'ResourceExt'" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
