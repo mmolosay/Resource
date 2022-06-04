@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="42931384-6724-4a94-ad7f-0d1550a7ee39" name="Changes" comment="Update Maven publication version" />
+    <list default="true" id="42931384-6724-4a94-ad7f-0d1550a7ee39" name="Changes" comment="Apply Apache License 2.0">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -342,7 +345,21 @@
       <option name="project" value="LOCAL" />
       <updated>1654347131368</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Add 'LICENSE.md'">
+      <created>1654348091412</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1654348091412</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Apply Apache License 2.0">
+      <created>1654348236103</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1654348236103</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -371,7 +388,9 @@
     <MESSAGE value="Extract instance checking properties into 'ResourceExt'" />
     <MESSAGE value="Refine KDoc" />
     <MESSAGE value="Update Maven publication version" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update Maven publication version" />
+    <MESSAGE value="Add 'LICENSE.md'" />
+    <MESSAGE value="Apply Apache License 2.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="Apply Apache License 2.0" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
