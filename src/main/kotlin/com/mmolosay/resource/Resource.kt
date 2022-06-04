@@ -44,7 +44,7 @@ sealed class Resource<out V> {
     class Success<out V>(val value: V) : Resource<V>()
 
     /**
-     * Represents failure, occurred while obtaining resource.
+     * Represents failure, occurred while obtaining data.
      *
      * @param cause [Throwable] caught.
      * @param payload some useful data, like int code or string message.
