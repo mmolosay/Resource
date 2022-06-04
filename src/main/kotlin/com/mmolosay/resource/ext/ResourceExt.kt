@@ -1,14 +1,23 @@
 package com.mmolosay.resource.ext
 
 import com.mmolosay.resource.Resource
-import com.mmolosay.resource.Resource.Empty
-import com.mmolosay.resource.Resource.Loading
-import com.mmolosay.resource.Resource.Success
-import com.mmolosay.resource.Resource.Failure
+import com.mmolosay.resource.Resource.*
 
 /*
  * Extension functions for 'Resource' instances.
  */
+
+val Resource<*>.isEmpty: Boolean
+    get() = (this is Empty)
+
+val Resource<*>.isLoading: Boolean
+    get() = (this is Loading)
+
+val Resource<*>.isSuccess: Boolean
+    get() = (this is Success)
+
+val Resource<*>.isFailure: Boolean
+    get() = (this is Failure<*>)
 
 /**
  *

@@ -51,17 +51,5 @@ sealed class Resource<out V> {
      */
     class Failure<out P>(val cause: Throwable, val payload: P? = null) : Resource<Nothing>()
 
-    val isEmpty: Boolean
-        get() = (this is Empty)
-
-    val isLoading: Boolean
-        get() = (this is Loading)
-
-    val isSuccess: Boolean
-        get() = (this is Success)
-
-    val isFailure: Boolean
-        get() = (this is Failure<*>)
-
     companion object
 }
