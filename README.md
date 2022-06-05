@@ -24,7 +24,7 @@ It represents some explicit state of dynamically obtained data. It could be eith
 
 ## Reasons to use
 1. Concept is easy to understand.
-2. [Resource](/src/main/kotlin/com.mmolosay/resource/Resource.kt) is immutable, which makes it great choice to use with such concepts like [Kotlin Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/) and [Android LiveData](https://developer.android.com/reference/androidx/lifecycle/LiveData).
+2. [Resource](/src/main/kotlin/com/mmolosay/resource/Resource.kt) is immutable, which makes it great choice to use with such concepts like [Kotlin Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/) and [Android LiveData](https://developer.android.com/reference/androidx/lifecycle/LiveData).
 3. Has a lot out-of-the-box features implemented with Kotlin extension functions.
 3. Small source code size.
 4. 100% documented.
