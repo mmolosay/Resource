@@ -31,7 +31,7 @@ It represents some explicit state of dynamically obtained data. It could be eith
 
 ## Installation
 Use [JitPack](https://www.jitpack.io) to add it as a dependency to your Kotlin project.
-Code snippet below shows way for adding it via [Gradle DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html):
+Code snippet below shows way for adding it via [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html):
 ```kotlin
 repositories {
     mavenCentral()
