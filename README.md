@@ -19,7 +19,7 @@ For instance, you're obtaining some data from remote server. Lets say, you're cr
 
 Five seconds have passed, but `value` is still `null`. What does it mean? Was there some error? Was the result `null`? Or connection is still being established and you have nothing to worry about?
 
-This is where [Resource](/src/main/kotlin/com.mmolosay/resource/Resource.kt) kisks in.
+This is where [Resource](/src/main/kotlin/com/mmolosay/resource/Resource.kt) kisks in.
 It represents some explicit state of dynamically obtained data. It could be either `Empty`, `Loading`, `Success` or `Failure` one, where `Success` cares obtained data and `Failure` incapsulates occurred exception and some usefull payload.
 
 ## Reasons to use
