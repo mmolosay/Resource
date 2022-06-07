@@ -2,8 +2,6 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version "1.6.20"
-    `java-library`
-    `maven-publish`
 }
 
 group = "com.github.mmolosay"
@@ -22,15 +20,4 @@ dependencies {
 
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
-}
-
-publishing {
-    publications {
-        create<MavenPublication>("maven") {
-            groupId = "com.github.mmolosay"
-            artifactId = "resource"
-            version = "1.0.3"
-            from(components["java"])
-        }
-    }
 }
