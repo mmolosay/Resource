@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.github.mmolosay"
-version = "1.0-SNAPSHOT"
+version = "1.0.4"
 
 allprojects {
     repositories {

@@ -13,7 +13,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "com.github.mmolosay"
             artifactId = "resource-context"
-            version = "1.0.0"
+            version = "1.0.4"
             from(components["java"])
         }
     }
