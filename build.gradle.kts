@@ -4,7 +4,7 @@ plugins {
     kotlin("jvm") version "1.6.20"
 }
 
-group = "com.github.mmolosay"
+group = "com.github.mmolosay.resource"
 version = "1.0.4"
 
 allprojects {
