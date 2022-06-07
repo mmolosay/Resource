@@ -10,7 +10,7 @@ dependencies {
 
 publishing {
     publications {
-        create<MavenPublication>("maven") {
+        create<MavenPublication>("resource-plain") {
             groupId = "com.github.mmolosay"
             artifactId = "resource-plain"
             version = "1.0.4"
