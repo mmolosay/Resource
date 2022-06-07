@@ -1,3 +1,3 @@
-include(":resource-plain")
-include(":resource-context")
+include("resource-plain")
+include("resource-context")
 rootProject.name = "resource"
