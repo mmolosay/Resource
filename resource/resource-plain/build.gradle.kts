@@ -11,7 +11,7 @@ dependencies {
 publishing {
     publications {
         create<MavenPublication>("resource-plain") {
-            groupId = "com.github.mmolosay"
+            groupId = "com.github.mmolosay.resource"
             artifactId = "resource-plain"
             version = "1.0.4"
             from(components["java"])
