@@ -4,18 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="42931384-6724-4a94-ad7f-0d1550a7ee39" name="Changes" comment="Compose 'README.md'">
-      <change afterPath="$PROJECT_DIR$/resource/resource-context/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource/resource-context/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource/resource-plain/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource/resource-plain/build.gradle.kts" afterDir="false" />
+    <list default="true" id="42931384-6724-4a94-ad7f-0d1550a7ee39" name="Changes" comment="Add 'resource-context' flavor">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/mmolosay/resource/Resource.kt" beforeDir="false" afterPath="$PROJECT_DIR$/resource/resource-plain/src/main/kotlin/com/mmolosay/resource/Resource.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/mmolosay/resource/ext/ResourceCompanionExt.kt" beforeDir="false" afterPath="$PROJECT_DIR$/resource/resource-plain/src/main/kotlin/com/mmolosay/resource/ext/ResourceCompanionExt.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/mmolosay/resource/ext/ResourceExt.kt" beforeDir="false" afterPath="$PROJECT_DIR$/resource/resource-plain/src/main/kotlin/com/mmolosay/resource/ext/ResourceExt.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/mmolosay/resource/util/UnknownOriginException.kt" beforeDir="false" afterPath="$PROJECT_DIR$/resource/resource-plain/src/main/kotlin/com/mmolosay/resource/util/UnknownOriginException.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,16 +83,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/mikhail.malasai/IdeaProjects/resource/resource/resource-context",
-    "settings.editor.selected.configurable": "preferences.sourceCode"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/mikhail.malasai/IdeaProjects/resource/resource/resource-context&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\mikhail.malasai\IdeaProjects\resource\resource\resource-context" />
@@ -223,10 +215,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.resource [publishToMavenLocal]" />
-        <item itemvalue="Gradle.resource [build]" />
-        <item itemvalue="Gradle.resource [clean]" />
-        <item itemvalue="Gradle.resource [publish]" />
         <item itemvalue="Gradle.resource [publishMavenJavaPublicationToMavenLocal]" />
+        <item itemvalue="Gradle.resource [publish]" />
+        <item itemvalue="Gradle.resource [clean]" />
+        <item itemvalue="Gradle.resource [build]" />
       </list>
     </recent_temporary>
   </component>
