@@ -7,7 +7,7 @@ plugins {
 }
 
 allprojects {
-    group = "io.mmolosay.resource"
+    group = "com.mmolosay.resource"
     version = "1.0.4"
 
     repositories {
