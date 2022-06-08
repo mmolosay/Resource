@@ -12,7 +12,8 @@
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/resource-context" />
             <option value="$PROJECT_DIR$/resource-plain" />
-            <option value="$PROJECT_DIR$/sample" />
+            <option value="$PROJECT_DIR$/sample.resource-context" />
+            <option value="$PROJECT_DIR$/sample.resource-plain" />
           </set>
         </option>
       </GradleProjectSettings>

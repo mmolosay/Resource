@@ -1,4 +1,5 @@
 include("resource-plain")
 include("resource-context")
-include("sample")
+include("sample.resource-plain")
+include("sample.resource-context")
 rootProject.name = "resource"
