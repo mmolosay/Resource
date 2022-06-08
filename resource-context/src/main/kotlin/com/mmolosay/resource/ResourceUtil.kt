@@ -29,7 +29,7 @@ fun <V> resource(state: ResourceState<V>): Resource<V> =
     DefaultResource(state)
 
 /**
- * Shorthand for [DefaultResource].
+ * Scope-based version of [resource].
  */
 fun <V> resource(producer: ResourceState.Companion.() -> ResourceState<V>): Resource<V> =
     DefaultResource(producer(ResourceState.Companion))
@@ -68,6 +68,12 @@ fun <V> DefaultResource(state: ResourceState<V>): Resource<V> =
  */
 infix fun <V> Resource<V>.with(state: ResourceState<V>): Resource<V> =
     ResourceImpl(this.context, state)
+
+/**
+ * Scope-based version of [Resource.with].
+ */
+infix fun <V> Resource<V>.with(producer: ResourceState.Companion.() -> ResourceState<V>): Resource<V> =
+    ResourceImpl(this.context, producer(ResourceState.Companion))
 
 /**
  * Composes new [Resource] out of `this` state and specified [context].
