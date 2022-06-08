@@ -5,7 +5,7 @@ plugins {
 allprojects {
 
     repositories {
-        gradlePluginPortal() // TODO: remove if unused
+        gradlePluginPortal()
     }
 }
 
