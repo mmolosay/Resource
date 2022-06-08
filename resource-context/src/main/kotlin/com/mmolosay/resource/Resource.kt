@@ -19,6 +19,7 @@ import com.mmolosay.resource.context.ResourceContext
  */
 
 /**
+ * // TODO: update
  * Represents state of dynamically obtained data.
  * It's either [Empty], [Loading], [Success] or [Failure] instance.
  *
@@ -42,7 +43,10 @@ import com.mmolosay.resource.context.ResourceContext
  */
 interface Resource<out V> {
 
-    val key: ResourceContext.Key
+    /**
+     * Type of `this` resource in [ResourceContext].
+     */
+    val type: ResourceContext.Element
 
     companion object
 }

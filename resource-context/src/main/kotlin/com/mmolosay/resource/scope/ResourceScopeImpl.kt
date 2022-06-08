@@ -12,7 +12,7 @@ internal data class ResourceScopeImpl<V>(
 ) : ResourceScope<V> {
 
     init {
-        require(context.contains(resource.key)) {
+        require(context.contains(resource.type)) {
             "Context does not have specified resource key"
         }
     }

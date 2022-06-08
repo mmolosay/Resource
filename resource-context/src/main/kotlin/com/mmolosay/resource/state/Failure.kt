@@ -10,7 +10,7 @@ import com.mmolosay.resource.context.ResourceContext
  * @param payload some useful data, like int code or string message.
  */
 class Failure<out P>(val cause: Throwable, val payload: P? = null) :
-    AbstractResource<Nothing>(Key) {
+    AbstractResource<Nothing>(Element) {
 
-    companion object Key : ResourceContext.Key
+    companion object Element : ResourceContext.Element
 }

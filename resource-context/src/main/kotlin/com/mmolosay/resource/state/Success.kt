@@ -8,7 +8,7 @@ import com.mmolosay.resource.context.ResourceContext
  *
  * @param value obtained value.
  */
-class Success<out V>(val value: V) : AbstractResource<V>(Key) {
+class Success<out V>(val value: V) : AbstractResource<V>(Element) {
 
-    companion object Key : ResourceContext.Key
+    companion object Element : ResourceContext.Element
 }
