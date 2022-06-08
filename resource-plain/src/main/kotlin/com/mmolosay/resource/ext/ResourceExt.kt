@@ -97,14 +97,14 @@ inline fun <V, P, R> Resource<V>.ifFailure(action: (cause: Throwable, payload: P
  * its actual instance.
  */
 inline fun <V> Resource<V>.invoke(
-    onEmpty: (() -> Unit) = {},
-    onLoading: (() -> Unit) = {},
-    onSuccess: ((value: V) -> Unit) = {},
-    onFailure: ((payload: Any?, cause: Throwable) -> Unit) = { _, _ -> }
+    onEmpty: () -> Unit = {},
+    onLoading: () -> Unit = {},
+    onSuccess: (value: V) -> Unit = {},
+    onFailure: (cause: Throwable, payload: Any?) -> Unit = { _, _ -> }
 ) =
     when (this) {
         is Empty -> onEmpty()
         is Loading -> onLoading()
         is Success -> onSuccess(this.value)
-        is Failure<*> -> onFailure(this.payload, this.cause)
+        is Failure<*> -> onFailure(this.cause, this.payload)
     }

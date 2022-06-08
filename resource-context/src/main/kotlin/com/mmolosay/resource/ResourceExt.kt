@@ -104,13 +104,13 @@ inline fun <V> Resource<V>.invoke(
     onEmpty: () -> Unit = {},
     onLoading: () -> Unit = {},
     onSuccess: (value: V) -> Unit = {},
-    onFailure: (payload: Any?, cause: Throwable) -> Unit = { _, _ -> },
+    onFailure: (cause: Throwable, payload: Any?) -> Unit = { _, _ -> },
     onOther: () -> Unit = {}
 ) =
     when (val s = this.state) {
         is Empty -> onEmpty()
         is Loading -> onLoading()
         is Success -> onSuccess(s.value)
-        is Failure<*> -> onFailure(s.payload, s.cause)
+        is Failure<*> -> onFailure(s.cause, s.payload)
         else -> onOther()
     }
