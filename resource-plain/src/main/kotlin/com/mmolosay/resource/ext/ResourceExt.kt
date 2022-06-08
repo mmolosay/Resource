@@ -83,11 +83,11 @@ inline fun <V, R> Resource<V>.ifSuccess(action: (value: V) -> R): R? {
 
 /**
  * Returns result of executing specified [action], if receiver [Resource] is an instance of
- * [Loading] class, or `null` otherwise
+ * [Failure] class, or `null` otherwise
  */
-inline fun <V, R> Resource<V>.ifFailure(action: () -> R): R? {
+inline fun <V, P, R> Resource<V>.ifFailure(action: (cause: Throwable, payload: P?) -> R): R? {
     return when (this) {
-        is Loading -> action()
+        is Failure<*> -> action(this.cause, this.payload as P?)
         else -> null
     }
 }
