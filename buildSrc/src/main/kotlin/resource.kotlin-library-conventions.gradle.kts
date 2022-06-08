@@ -7,10 +7,6 @@ plugins {
 configure<PublishingExtension> {
     publications {
         create<MavenPublication>("maven") {
-            println(project.group.toString())
-            println(project.name)
-            println(project.version.toString())
-
             groupId = project.group.toString()
             artifactId = project.name
             version = project.version.toString()
