@@ -29,6 +29,12 @@ fun <V> resource(state: ResourceState<V>): Resource<V> =
     DefaultResource(state)
 
 /**
+ * Shorthand for [DefaultResource].
+ */
+fun <V> resource(producer: ResourceState.Companion.() -> ResourceState<V>): Resource<V> =
+    DefaultResource(producer(ResourceState.Companion))
+
+/**
  * Creates new [Resource] out of [ReducedContext] and specified [state].
  */
 fun <V> ReducedResource(state: ResourceState<V> = Empty): Resource<V> =
