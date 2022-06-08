@@ -1,4 +1,4 @@
-package com.mmolosay.resource.scope
+package com.mmolosay.resource
 
 import com.mmolosay.resource.context.*
 import com.mmolosay.resource.state.Empty
