@@ -1,10 +1,10 @@
 package com.mmolosay.resource.context
 
-import com.mmolosay.resource.Resource
+import com.mmolosay.resource.state.ResourceState
 import com.mmolosay.resource.context.ResourceContext.Element
 
 /**
- * Persistent context for the [Resource].
+ * Persistent context for the [ResourceState].
  *
  * Represent collection (set) of allowed in `this` context [Element]s.
  * It could be a combination of other [ResourceContext] instances.
@@ -29,6 +29,7 @@ interface ResourceContext {
 
     /**
      * Element of [ResourceContext].
+     * Generally, a type of resource state, which is allowed in this context.
      * An element of the resource context is a singleton context by itself.
      */
     interface Element : ResourceContext {

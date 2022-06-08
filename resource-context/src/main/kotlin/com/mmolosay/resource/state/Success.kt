@@ -1,6 +1,5 @@
 package com.mmolosay.resource.state
 
-import com.mmolosay.resource.AbstractResource
 import com.mmolosay.resource.context.ResourceContext
 
 /**
@@ -8,7 +7,7 @@ import com.mmolosay.resource.context.ResourceContext
  *
  * @param value obtained value.
  */
-class Success<out V>(val value: V) : AbstractResource<V>(Element) {
+class Success<out V>(val value: V) : AbstractResourceState<V>(Element) {
 
     companion object Element : ResourceContext.Element
 }

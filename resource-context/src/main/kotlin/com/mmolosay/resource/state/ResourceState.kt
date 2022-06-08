@@ -1,4 +1,4 @@
-package com.mmolosay.resource
+package com.mmolosay.resource.state
 
 import com.mmolosay.resource.context.ResourceContext
 
@@ -41,7 +41,7 @@ import com.mmolosay.resource.context.ResourceContext
  * it is __strongly recommended__ to use `non-nullable` ones, since success state with `null` as
  * its value may be confusing. Resource is covariant in its data type.
  */
-interface Resource<out V> {
+interface ResourceState<out V> {
 
     /**
      * Type of `this` resource in [ResourceContext].

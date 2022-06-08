@@ -1,6 +1,5 @@
 package com.mmolosay.resource.state
 
-import com.mmolosay.resource.Resource
 import com.mmolosay.resource.context.ResourceContext
 
 /**
@@ -12,7 +11,7 @@ import com.mmolosay.resource.context.ResourceContext
  * AbstractResource can not be used as superclass, because it requires passing key, which is
  * this object itself and not initialized at the moment yet.
  */
-object Empty : Resource<Nothing>, ResourceContext.Element {
+object Empty : ResourceState<Nothing>, ResourceContext.Element {
 
     override val type: ResourceContext.Element = Empty
 }

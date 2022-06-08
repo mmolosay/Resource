@@ -1,58 +1,64 @@
 package com.mmolosay.resource.scope
 
-import com.mmolosay.resource.Resource
 import com.mmolosay.resource.context.*
 import com.mmolosay.resource.state.Empty
+import com.mmolosay.resource.state.ResourceState
 
 // region Creators
 
 /**
- * Shorthand for [DefaultScope].
+ * Shorthand for [DefaultResource].
  */
-fun <V> scope(resource: Resource<V>): ResourceScope<V> =
-    DefaultScope(resource)
+fun <V> resource(state: ResourceState<V>): Resource<V> =
+    DefaultResource(state)
 
 /**
- * Creates new [ResourceScope] out of [ReducedContext] and specified [resource].
+ * Creates new [Resource] out of [ReducedContext] and specified [state].
  */
-fun <V> ReducedScope(resource: Resource<V> = Empty): ResourceScope<V> =
-    ResourceScopeImpl(ReducedContext, resource)
+fun <V> ReducedResource(state: ResourceState<V> = Empty): Resource<V> =
+    ResourceImpl(ReducedContext, state)
 
 /**
- * Creates new [ResourceScope] out of [ProgressContext] and specified [resource].
+ * Creates new [Resource] out of [ProgressContext] and specified [state].
  */
-fun <V> ProgressScope(resource: Resource<V> = Empty): ResourceScope<V> =
-    ResourceScopeImpl(ProgressContext, resource)
+fun <V> ProgressResource(state: ResourceState<V> = Empty): Resource<V> =
+    ResourceImpl(ProgressContext, state)
 
 /**
- * Creates new [ResourceScope] out of [ExhaustiveContext] and specified [resource].
+ * Creates new [Resource] out of [ExhaustiveContext] and specified [state].
  */
-fun <V> EschaustiveScope(resource: Resource<V> = Empty): ResourceScope<V> =
-    ResourceScopeImpl(ExhaustiveContext, resource)
+fun <V> ExhaustiveResource(state: ResourceState<V> = Empty): Resource<V> =
+    ResourceImpl(ExhaustiveContext, state)
 
 /**
- * Creates new [ResourceScope] out of [DefaultContext] and specified [resource].
+ * Creates new [Resource] out of [DefaultContext] and specified [state].
  */
-fun <V> DefaultScope(resource: Resource<V>): ResourceScope<V> =
-    ResourceScopeImpl(DefaultContext, resource)
+fun <V> DefaultResource(state: ResourceState<V>): Resource<V> =
+    ResourceImpl(DefaultContext, state)
 
 
 // endregion
 
 /**
- * Composes new [ResourceScope] out of current one's context and specified [resource].
+ * Composes new [Resource] out of current one's context and specified [state].
+ * Receiver [Resource.context] must have a specified [state]'s type in it,
+ * otherwise exception will be thrown.
  */
-infix fun <V> ResourceScope<V>.with(resource: Resource<V>): ResourceScope<V> =
-    ResourceScopeImpl(this.context, resource)
+infix fun <V> Resource<V>.with(state: ResourceState<V>): Resource<V> =
+    ResourceImpl(this.context, state)
 
 /**
- * Composes new [ResourceScope] out of `this` resource and specified [context].
+ * Composes new [Resource] out of `this` state and specified [context].
+ * Specified [context] must have a receiver resource [ResourceState.type] in it,
+ * otherwise exception will be thrown.
  */
-infix fun <V> Resource<V>.with(context: ResourceContext): ResourceScope<V> =
-    ResourceScopeImpl(context, this)
+infix fun <V> ResourceState<V>.with(context: ResourceContext): Resource<V> =
+    ResourceImpl(context, this)
 
 /**
- * Composes new [ResourceScope] out of `this` context and specified [resource].
+ * Composes new [Resource] out of `this` context and specified [state].
+ * Receiver context must have a specified [state]'s type in it,
+ * otherwise exception will be thrown.
  */
-infix fun <V> ResourceContext.with(resource: Resource<V>): ResourceScope<V> =
-    ResourceScopeImpl(this, resource)
+infix fun <V> ResourceContext.with(state: ResourceState<V>): Resource<V> =
+    ResourceImpl(this, state)
