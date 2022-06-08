@@ -4,9 +4,9 @@ import com.mmolosay.resource.Resource
 import com.mmolosay.resource.context.ResourceContext
 
 /**
- * Combination of [ResourceContext] and actual [Resource] instance matching the context.
+ * Combination of [ResourceContext] and actual [Resource] instance, matching the context.
  *
- * Concrete implementation should check, that [resource]'s key is in the [context].
+ * Concrete implementation should check, that [resource]'s type is in the [context].
  */
 interface ResourceScope<V> {
 

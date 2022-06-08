@@ -22,4 +22,10 @@ val ProgressContext = Empty + Loading + Success
 /**
  * [ResourceContext] composed of [Empty], [Loading], [Success] and [Failure] states.
  */
-val DefaultContext = Empty + Loading + Success + Failure
+val ExhaustiveContext = Empty + Loading + Success + Failure
+
+/**
+ * Default [ResourceContext] to be used in builder functions.
+ * You might want to set your own context.
+ */
+var DefaultContext = ExhaustiveContext
