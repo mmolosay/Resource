@@ -2,14 +2,16 @@
 [![License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0)
 
 # Resource
+
 Handy states for dynamically obtained data.
 
 ## Table of contents
+
 * [Problem to solve](#problem-to-solve)
 * [Reasons to use](#reasons-to-use)
 * [Artifacts](#artifacts)
-  * [resource-plain](#resource-plain)
-  * [resource-context](#resource-context)
+    * [resource-plain](#resource-plain)
+    * [resource-context](#resource-context)
 * [Installation](#installation)
 * [Example of usage](#example-of-usage)
 * [License](#license)
@@ -17,51 +19,87 @@ Handy states for dynamically obtained data.
 ------
 
 ## Problem to solve
+
 In contemporary software development a huge number of operations and their results are asynchronous.
-For instance, you're obtaining some data from remote server. Lets say, you're creating some kind of `Observable` and observe its `value` changes, which is initially `null`. Next you trigger some `fetchRemoteData()` and wait.
+For instance, you're obtaining some data from remote server. Let's say, you're creating some kind
+of `Observable` and observe its `value` changes, which is initially `null`. Next you trigger
+some `fetchRemoteData()` and wait.
 
-Five seconds have passed, but `value` is still `null`. What does it mean? Was there some error? Was the result `null`? Or connection is still being established and you have nothing to worry about?
+Five seconds have passed, but `value` is still `null`. What does it mean? Was there some error? Was
+the result `null`? Or connection is still being established, and you have nothing to worry about?
 
-This is where [Resource](/resource-plain/src/main/kotlin/com/mmolosay/resource/Resource.kt) kisks in.
-It represents some explicit state of dynamically obtained data. For instance, it could be `Empty`, `Loading`, `Success` or `Failure` state, where `Success` carries obtained data and `Failure` incapsulates exception cause and any usefull payload, like error code.
+This is where [Resource](/resource-plain/src/main/kotlin/com/mmolosay/resource/Resource.kt) kicks
+in.
+
+It represents some explicit state of dynamically obtained data. For instance, it could be `Empty`
+, `Loading`, `Success` or `Failure` state, where `Success` carries obtained data and `Failure`
+encapsulates exception cause and any useful payload, like error code.
 
 ## Reasons to use
+
 1. Concept is easy to understand.
-2. Implementations of `Resource` are immutable, which makes it great choice to use with such solutions like [Kotlin Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/) and [Android LiveData](https://developer.android.com/reference/androidx/lifecycle/LiveData).
+2. Implementations of `Resource` are immutable, which makes it great choice to use with such
+   solutions
+   like [Kotlin Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/)
+   and [Android LiveData](https://developer.android.com/reference/androidx/lifecycle/LiveData).
 3. Has a lot out-of-the-box features implemented with Kotlin extension functions.
 3. Small source code size.
 4. 100% documented.
 
 ## Artifacts
+
 ### resource-plain
-Sealed implementation of [Resource](/resource-plain/src/main/kotlin/com/mmolosay/resource/Resource.kt) with only `Resource.Empty`, `Resource.Loading`, `Resource.Success` and `Resource.Failure` derived states.
-Sealing makes it [exhaustive](https://kotlinlang.org/docs/sealed-classes.html#sealed-classes-and-when-expression) in `when` statement, thus it's easy to cover all cases of actual instance.
-*Note: author recommends to use [Resource.invoke()](/resource-plain/src/main/kotlin/com/mmolosay/resource/ext/ResourceExt.kt#L99) extension function instead of `when` expression.*
+
+`com.github.mmolosay.resource:resource-plain:VERSION`
+
+Sealed implementation
+of [Resource](/resource-plain/src/main/kotlin/com/mmolosay/resource/Resource.kt) with
+only `Resource.Empty`, `Resource.Loading`, `Resource.Success` and `Resource.Failure` derived states.
+Sealing makes
+it [exhaustive](https://kotlinlang.org/docs/sealed-classes.html#sealed-classes-and-when-expression)
+in `when` statement, thus it's easy to cover all cases of actual instance.
+*Note: author recommends to
+use [Resource.invoke()](/resource-plain/src/main/kotlin/com/mmolosay/resource/ext/ResourceExt.kt#L99)
+extension function instead of `when` expression.*
 
 ### resource-context
-Philosophy of this flavor allows you to customize a context, in which your `Resource` states will change. See [Example of usage](#example-of-usage) section for more details.
+
+`com.github.mmolosay.resource:resource-context:VERSION`
+
+Philosophy of this flavor allows you to customize a context, in which your `Resource` states will
+change. See [Example of usage](#example-of-usage) section for more details.
 
 ## Installation
+
 Use [JitPack](https://www.jitpack.io) to add it as a dependency to your Kotlin project.
-Code snippet below shows way for adding it via [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html):
+Code snippet below shows way for adding it
+via [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html):
+
 ```kotlin
 repositories {
-  mavenCentral()
-  maven { setUrl("https://jitpack.io") }
+    mavenCentral()
+    maven("https://jitpack.io") // make sure to use jitpack repository
 }
 
 dependencies {
-  implementation("com.github.mmolosay.resource:ARTIFACT:VERSION")
+    implementation("com.github.mmolosay.resource:ARTIFACT:VERSION")
 }
 ```
+
 Where:
+
 * `ARTIFACT` is a desired implementation. See [Artifacts](#artifacts) section for more details.
-* `VERSION` is the version of desired release. It can be obtained on [releases](https://github.com/mmolosay/Resource/releases) page. Lattest release version is stated at the top of this document in JitPack badge.
+* `VERSION` is the version of desired release. It can be obtained
+  on [releases](https://github.com/mmolosay/Resource/releases) page. Latest release version is
+  stated at the top of this document in JitPack badge.
 
 ## Example of usage
-Following examples demonstrate a way to use `Resource` flavors with [Kotlin Flows](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/):
+
+Following examples demonstrate a way to use `Resource` flavors
+with [Kotlin Flows](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/):
 
 ### resource-plain
+
 ```kotlin
 // Declare your resource flow
 val flow = MutableStateFlow(Resource.empty<YourData>())
@@ -70,9 +108,9 @@ val flow = MutableStateFlow(Resource.empty<YourData>())
 fun getData() {
     flow.update { Resource.loading() }
     try {
-         getDataAsync { data ->
+        getDataAsync { data ->
             flow.update { Resource.success(data) }
-         }
+        }
     } catch (e: SomeException) {
         flow.update { Resource.failure(e) }
     }
@@ -90,6 +128,7 @@ flow.collect { resource ->
 ```
 
 ### resource-context
+
 ```kotlin
 // Declare your resource flow
 val flow = MutableStateFlow(resource<YourData> { empty() })
@@ -119,6 +158,7 @@ flow.collect { resource ->
 ```
 
 ## License
+
 ```text
 Copyright 2022 Mikhail Malasai
 
