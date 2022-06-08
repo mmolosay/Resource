@@ -1,7 +1,7 @@
 package com.mmolosay.resource.context
 
-import com.mmolosay.resource.state.ResourceState
 import com.mmolosay.resource.context.ResourceContext.Element
+import com.mmolosay.resource.state.ResourceState
 
 /**
  * Persistent context for the [ResourceState].
@@ -22,9 +22,17 @@ interface ResourceContext {
      */
     fun <R> fold(initial: R, operation: (R, Element) -> R): R
 
+    /**
+     * Combines specified [context] and `this` one.
+     * Result is a [ResourceContext] with [Element]s from both of them with all duplicates dropped.
+     */
     operator fun plus(context: ResourceContext): ResourceContext =
         context.fold(this) { acc, cur ->
-            CombinedContext(acc, cur)
+            if (acc.contains(cur)) {
+                acc
+            } else {
+                CombinedContext(acc, cur)
+            }
         }
 
     /**
