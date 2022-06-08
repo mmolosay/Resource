@@ -23,7 +23,7 @@ import com.mmolosay.resource.context.ResourceContext
  *
  * @param V the type of data. Although [V] can be both `nullable` and `non-nullable` type,
  * it is __strongly recommended__ to use `non-nullable` ones, since success state with `null` as
- * its value may be confusing. Resource is covariant in its data type.
+ * its value may be confusing. State is covariant in its data type.
  */
 interface ResourceState<out V> {
 
