@@ -95,10 +95,12 @@ Where:
 
 ## Example of usage
 
-Following examples demonstrate a way to use `Resource` flavors
+Following **simplified** examples demonstrate a way to use `Resource` flavors
 with [Kotlin Flows](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/):
 
 ### resource-plain
+
+Full sample is in [sample.resource-plain](/sample.resource-plain/src/main/kotlin/Main.kt) module.
 
 ```kotlin
 // Declare your resource flow
@@ -128,6 +130,8 @@ flow.collect { resource ->
 ```
 
 ### resource-context
+
+Full sample is in [sample.resource-context](/sample.resource-context/src/main/kotlin/Main.kt) module.
 
 ```kotlin
 // Declare your resource flow
