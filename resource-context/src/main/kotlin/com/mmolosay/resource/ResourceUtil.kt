@@ -90,3 +90,9 @@ infix fun <V> ResourceState<V>.with(context: ResourceContext): Resource<V> =
  */
 infix fun <V> ResourceContext.with(state: ResourceState<V>): Resource<V> =
     ResourceImpl(this, state)
+
+/**
+ * Scope-based version of [ResourceContext.with].
+ */
+infix fun <V> ResourceContext.with(producer: ResourceState.Companion.() -> ResourceState<V>): Resource<V> =
+    ResourceImpl(this, producer(ResourceState.Companion))
