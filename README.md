@@ -7,6 +7,9 @@ Handy states for dynamically obtained data.
 ## Table of contents
 * [Problem to solve](#problem-to-solve)
 * [Reasons to use](#reasons-to-use)
+* [Artifacts](#artifacts)
+  * [resource-plain](#resource-plain)
+  * [resource-context](#resource-context)
 * [Installation](#installation)
 * [Example of usage](#example-of-usage)
 * [License](#license)
@@ -19,41 +22,98 @@ For instance, you're obtaining some data from remote server. Lets say, you're cr
 
 Five seconds have passed, but `value` is still `null`. What does it mean? Was there some error? Was the result `null`? Or connection is still being established and you have nothing to worry about?
 
-This is where [Resource](/src/main/kotlin/com/mmolosay/resource/Resource.kt) kisks in.
-It represents some explicit state of dynamically obtained data. It could be either `Empty`, `Loading`, `Success` or `Failure` one, where `Success` cares obtained data and `Failure` incapsulates occurred exception and some usefull payload.
+This is where [Resource](/resource-plain/src/main/kotlin/com/mmolosay/resource/Resource.kt) kisks in.
+It represents some explicit state of dynamically obtained data. For instance, it could be `Empty`, `Loading`, `Success` or `Failure` state, where `Success` carries obtained data and `Failure` incapsulates exception cause and any usefull payload, like error code.
 
 ## Reasons to use
 1. Concept is easy to understand.
-2. [Resource](/src/main/kotlin/com/mmolosay/resource/Resource.kt) is immutable, which makes it great choice to use with such concepts like [Kotlin Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/) and [Android LiveData](https://developer.android.com/reference/androidx/lifecycle/LiveData).
+2. Implementations of `Resource` are immutable, which makes it great choice to use with such solutions like [Kotlin Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/) and [Android LiveData](https://developer.android.com/reference/androidx/lifecycle/LiveData).
 3. Has a lot out-of-the-box features implemented with Kotlin extension functions.
 3. Small source code size.
 4. 100% documented.
+
+## Artifacts
+### resource-plain
+Sealed implementation of [Resource](/resource-plain/src/main/kotlin/com/mmolosay/resource/Resource.kt) with only `Resource.Empty`, `Resource.Loading`, `Resource.Success` and `Resource.Failure` derived states.
+Sealing makes it [exhaustive](https://kotlinlang.org/docs/sealed-classes.html#sealed-classes-and-when-expression) in `when` statement, thus it's easy to cover all cases of actual instance.
+*Note: author recommends to use [Resource.invoke()](/resource-plain/src/main/kotlin/com/mmolosay/resource/ext/ResourceExt.kt#L99) extension function instead of `when` expression.*
+
+### resource-context
+Philosophy of this flavor allows you to customize a context, in which your `Resource` states will change. See [Example of usage](#example-of-usage) section for more details.
 
 ## Installation
 Use [JitPack](https://www.jitpack.io) to add it as a dependency to your Kotlin project.
 Code snippet below shows way for adding it via [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html):
 ```kotlin
 repositories {
-    mavenCentral()
-    maven { setUrl("https://jitpack.io") }
+  mavenCentral()
+  maven { setUrl("https://jitpack.io") }
 }
 
 dependencies {
-    implementation("com.github.mmolosay:resource:VERSION")
+  implementation("com.github.mmolosay.resource:ARTIFACT:VERSION")
 }
 ```
-Where `VERSION` is the version of desired release. It can be obtained on [releases](https://github.com/mmolosay/Resource/releases) page. Lattest release version is stated at the top of this document in JitPack badge.
+Where:
+* `ARTIFACT` is a desired implementation. See [Artifacts](#artifacts) section for more details.
+* `VERSION` is the version of desired release. It can be obtained on [releases](https://github.com/mmolosay/Resource/releases) page. Lattest release version is stated at the top of this document in JitPack badge.
 
 ## Example of usage
-Following example demonstrates a way to use `Resource` with [Kotlin Flows](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/):
+Following examples demonstrate a way to use `Resource` flavors with [Kotlin Flows](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/):
+
+### resource-plain
 ```kotlin
+// Declare your resource flow
 val flow = MutableStateFlow(Resource.empty<YourData>())
-fetchYourData(flow) // fetches data and puts it in specified flow
+...
+// Change values
+fun getData() {
+    flow.update { Resource.loading() }
+    try {
+         getDataAsync { data ->
+            flow.update { Resource.success(data) }
+         }
+    } catch (e: SomeException) {
+        flow.update { Resource.failure(e) }
+    }
+}
+...
+// Observe changes
 flow.collect { resource ->
     resource.invoke(
         onEmpty = { /* update UI, like showing some message */ },
-        onLoading = { /* update UI, like showing progress bar */ }. 
-        onSuccess = { data -> /* populate data to UI */ }
+        onLoading = { /* update UI, like showing progress bar */ },
+        onSuccess = { data -> /* populate data to UI */ },
+        onFailure = { payload, cause -> /* display notification on UI */ }
+    )
+}
+```
+
+### resource-context
+```kotlin
+// Declare your resource flow
+val flow = MutableStateFlow(resource<YourData> { empty() })
+...
+// Change values
+fun getData() {
+    flow.update { it with { loading() } }
+    try {
+        getDataAsync { data ->
+            flow.update { it with { success(data) } }
+        }
+    } catch (e: SomeException) {
+        flow.update { it with { failure(e) } }
+    }
+}
+...
+// Observe changes
+flow.collect { resource ->
+    // You can use provided extension or write your own for your custom states
+    resource.invoke(
+        onEmpty = { /* update UI, like showing some message */ },
+        onLoading = { /* update UI, like showing progress bar */ },
+        onSuccess = { data -> /* populate data to UI */ },
+        onFailure = { payload, cause -> /* display notification on UI */ }
     )
 }
 ```
