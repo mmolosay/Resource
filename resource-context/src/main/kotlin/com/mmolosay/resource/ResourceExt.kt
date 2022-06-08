@@ -92,3 +92,25 @@ inline fun <V, P, R> Resource<V>.ifFailure(action: (cause: Throwable, payload: P
         else -> null
     }
 }
+
+/**
+ * Invokes one of specified callbacks on receiver [Resource] depending on
+ * its [Resource.state] instance.
+ * If matching no concrete state, [onOther] will be invoked.
+ *
+ * You can create your own 'invoke' extension functions with your custom states.
+ */
+inline fun <V> Resource<V>.invoke(
+    onEmpty: () -> Unit = {},
+    onLoading: () -> Unit = {},
+    onSuccess: (value: V) -> Unit = {},
+    onFailure: (payload: Any?, cause: Throwable) -> Unit = { _, _ -> },
+    onOther: () -> Unit = {}
+) =
+    when (val s = this.state) {
+        is Empty -> onEmpty()
+        is Loading -> onLoading()
+        is Success -> onSuccess(s.value)
+        is Failure<*> -> onFailure(s.payload, s.cause)
+        else -> onOther()
+    }
