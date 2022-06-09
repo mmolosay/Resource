@@ -66,11 +66,12 @@ extension function instead of `when` expression.*
 
 `com.github.mmolosay.resource:resource-context:VERSION`
 
-**Preferred flavor of `Resource` library to use.**
+**It is a preferred flavor of `Resource` library to use.**
 
 Philosophy of this flavor allows you to customize a context, in which your `Resource` states will
 change. 
-For example, you may want your resource to only have states of `Empty` and `Success`, 
+
+For example, you may want your resource to only have states of `Empty` and `Success` ([ReducedScope](/resource-context/src/main/kotlin/com/mmolosay/resource/scope/ReducedScope.kt)), 
 when you're interested in data or its absence only. You will be given scope, in which you can create states for resource: 
 it will protect you from setting state out of context. Neat, isn't it? :>
 
