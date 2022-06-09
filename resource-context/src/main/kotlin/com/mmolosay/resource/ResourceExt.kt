@@ -1,8 +1,6 @@
 package com.mmolosay.resource
 
-import com.mmolosay.resource.scope.ExhaustiveScope
-import com.mmolosay.resource.scope.ProgressScope
-import com.mmolosay.resource.scope.ReducedScope
+import com.mmolosay.resource.scope.*
 import com.mmolosay.resource.state.Empty
 import com.mmolosay.resource.state.Failure
 import com.mmolosay.resource.state.Loading
@@ -79,3 +77,9 @@ inline fun <V> Resource<V, ExhaustiveScope>.invoke(
     }
 
 // endregion
+
+/**
+ * Creates new [Resource] instance of receiver's scope and state from specified [producer].
+ */
+infix fun <V, S : ResourceScope> Resource<V, S>.with(producer: ResourceStateProducer<S, V>): Resource<V, S> =
+    this.scope with producer

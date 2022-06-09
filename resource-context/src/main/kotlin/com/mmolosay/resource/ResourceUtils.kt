@@ -1,7 +1,6 @@
 package com.mmolosay.resource
 
 import com.mmolosay.resource.scope.*
-import com.mmolosay.resource.state.ResourceState
 
 /*
  * Utils associated with Resource.
@@ -43,24 +42,11 @@ fun <V> resource(
 
 /**
  * Creates new [Resource] instance.
- *
- * Be careful with this builder function, because if specified [state] is not in [scope]'s context,
- * you will get an exception.
- * Consider using one of resource builder functions or [ResourceScope.with].
  */
 fun <V, S : ResourceScope> Resource(
     scope: S,
-    state: ResourceState<V>
+    producer: ResourceStateProducer<S, V>
 ): Resource<V, S> =
-    object : AbstractResource<V, S>(scope, state) {
-        override fun clone(state: ResourceState<V>): Resource<V, S> =
-            Resource(scope, state)
-    }
+    ResourceImpl(scope, producer(scope))
 
 // endregion
-
-/**
- * Creates new [Resource] instance of receiver's scope and state from specified [producer].
- */
-infix fun <V, S : ResourceScope> Resource<V, S>.with(producer: ResourceStateProducer<S, V>): Resource<V, S> =
-    this.scope with producer

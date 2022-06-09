@@ -20,11 +20,12 @@ import com.mmolosay.resource.state.ResourceState
  */
 
 /**
- * Base internal class for [Resource] implementations.
+ * Internal implementation of [Resource].
+ * It will check that [state] is in [scope]'s context and throw exception if it's not true.
  */
-internal abstract class AbstractResource<V, S : ResourceScope>(
-    final override val scope: S,
-    final override val state: ResourceState<V>
+internal class ResourceImpl<V, S : ResourceScope>(
+    override val scope: S,
+    override val state: ResourceState<V>
 ) : Resource<V, S> {
 
     init {

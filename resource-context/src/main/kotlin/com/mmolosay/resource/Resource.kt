@@ -37,11 +37,4 @@ interface Resource<V, S : ResourceScope> {
      *
      */
     val scope: S
-
-    /**
-     * Returns new copy of `this` resource.
-     * Should not be used directly, because it does not check [context], thus
-     * illegal resource may be set.
-     */
-    fun clone(state: ResourceState<V>): Resource<V, S>
 }
