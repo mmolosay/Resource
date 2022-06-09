@@ -22,6 +22,25 @@ import com.mmolosay.resource.scope.*
  * Utils associated with Resource.
  */
 
+// region Type-aliases
+
+/**
+ * `typealias` for [Resource] of [ReducedScope].
+ */
+typealias ReducedResource<V> = Resource<V, ReducedScope>
+
+/**
+ * `typealias` for [Resource] of [ProgressScope].
+ */
+typealias ProgressResource<V> = Resource<V, ProgressScope>
+
+/**
+ * `typealias` for [Resource] of [ExhaustiveScope].
+ */
+typealias ExhaustiveResource<V> = Resource<V, ExhaustiveScope>
+
+// endregion
+
 // region Creators
 
 /**
@@ -29,7 +48,7 @@ import com.mmolosay.resource.scope.*
  */
 fun <V> ReducedResource(
     producer: ResourceStateProducer<ReducedScope, V> = { empty() }
-): Resource<V, ReducedScope> =
+): ReducedResource<V> =
     ReducedScope with producer
 
 /**
@@ -37,15 +56,15 @@ fun <V> ReducedResource(
  */
 fun <V> ProgressResource(
     producer: ResourceStateProducer<ProgressScope, V> = { empty() }
-): Resource<V, ProgressScope> =
+): ProgressResource<V> =
     ProgressScope with producer
 
 /**
- * Creates new [Resource] of [ExhaustiveResource] with empty state by default.
+ * Creates new [Resource] of [ExhaustiveScope] with empty state by default.
  */
 fun <V> ExhaustiveResource(
     producer: ResourceStateProducer<ExhaustiveScope, V> = { empty() }
-): Resource<V, ExhaustiveScope> =
+): ExhaustiveResource<V> =
     ExhaustiveScope with producer
 
 /**
@@ -53,7 +72,7 @@ fun <V> ExhaustiveResource(
  */
 fun <V> resource(
     producer: ResourceStateProducer<ExhaustiveScope, V>
-): Resource<V, ExhaustiveScope> =
+): ExhaustiveResource<V> =
     ExhaustiveScope with producer
 
 /**
