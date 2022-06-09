@@ -1,7 +1,5 @@
-import com.mmolosay.resource.Resource
+import com.mmolosay.resource.*
 import com.mmolosay.resource.context.ResourceContext
-import com.mmolosay.resource.invoke
-import com.mmolosay.resource.resource
 import com.mmolosay.resource.scope.ExhaustiveScope
 import com.mmolosay.resource.scope.ResourceScope
 import com.mmolosay.resource.scope.ResourceStateProducer
@@ -9,7 +7,6 @@ import com.mmolosay.resource.state.AbstractResourceState
 import com.mmolosay.resource.state.Empty
 import com.mmolosay.resource.state.Loading
 import com.mmolosay.resource.state.ResourceState
-import com.mmolosay.resource.with
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
@@ -43,7 +40,7 @@ fun main() {
  */
 private fun defaultContextSample() =
     runBlocking {
-        val flow = MutableStateFlow(resource<String> { empty() })
+        val flow = MutableStateFlow(resource<String>())
         launch {
             flow.collect { resource ->
                 resource.invoke(
@@ -62,6 +59,8 @@ private fun defaultContextSample() =
  */
 private fun customContextSample() =
     runBlocking {
+        val a = ExhaustiveResource<String> { empty() }
+        val b: ExhaustiveResource<String> = resource()
         val flow = MutableStateFlow(ReachingResource())
         launch {
             flow.collect { resource ->

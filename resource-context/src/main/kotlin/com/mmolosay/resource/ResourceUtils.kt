@@ -71,7 +71,7 @@ fun <V> ExhaustiveResource(
  * Shorthand for [ExhaustiveResource] builder.
  */
 fun <V> resource(
-    producer: ResourceStateProducer<ExhaustiveScope, V>
+    producer: ResourceStateProducer<ExhaustiveScope, V> = { empty() }
 ): ExhaustiveResource<V> =
     ExhaustiveScope with producer
 
