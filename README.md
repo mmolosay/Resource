@@ -66,8 +66,15 @@ extension function instead of `when` expression.*
 
 `com.github.mmolosay.resource:resource-context:VERSION`
 
+**Preferred flavor of `Resource` library to use.**
+
 Philosophy of this flavor allows you to customize a context, in which your `Resource` states will
-change. See [Example of usage](#example-of-usage) section for more details.
+change. 
+For example, you may want your resource to only have states of `Empty` and `Success`, 
+when you're interested in data or its absence only. You will be given scope, in which you can create states for resource: 
+it will protect you from setting state out of context. Neat, isn't it? :>
+
+See [Example of usage](#example-of-usage) section for more details.
 
 ## Installation
 
@@ -135,7 +142,7 @@ Full sample is in [sample.resource-context](/sample.resource-context/src/main/ko
 
 ```kotlin
 // Declare your resource flow
-val flow = MutableStateFlow(resource<YourData> { empty() })
+val flow = MutableStateFlow(resource<YourData>()) // empty by default
 ...
 // Change values
 fun getData() {
