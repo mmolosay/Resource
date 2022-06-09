@@ -1,7 +1,7 @@
 package com.mmolosay.resource
 
+import com.mmolosay.resource.scope.ResourceScope
 import com.mmolosay.resource.state.ResourceState
-import com.mmolosay.resource.context.ResourceContext
 
 /*
  * Copyright 2022 Mikhail Malasai
@@ -20,19 +20,16 @@ import com.mmolosay.resource.context.ResourceContext
  */
 
 /**
- * Concrete internal implementation of [Resource].
+ * Base internal class for [Resource] implementations.
  */
-internal data class ResourceImpl<V>(
-    override val context: ResourceContext,
-    override val state: ResourceState<V>
-) : Resource<V> {
+internal abstract class AbstractResource<V, S : ResourceScope>(
+    final override val scope: S,
+    final override val state: ResourceState<V>
+) : Resource<V, S> {
 
     init {
-        require(context.contains(state.type)) {
+        require(scope.context.contains(state.type)) {
             "ResourceContext does not have specified ResourceState type"
         }
     }
-
-    override fun clone(resource: ResourceState<V>): Resource<V> =
-        this.copy(state = resource)
 }

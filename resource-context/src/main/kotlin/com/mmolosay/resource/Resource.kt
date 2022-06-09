@@ -1,6 +1,7 @@
 package com.mmolosay.resource
 
 import com.mmolosay.resource.context.ResourceContext
+import com.mmolosay.resource.scope.ResourceScope
 import com.mmolosay.resource.state.ResourceState
 
 /*
@@ -24,7 +25,7 @@ import com.mmolosay.resource.state.ResourceState
  *
  * Concrete implementation should check, that [state]'s type is in the [context].
  */
-interface Resource<V> {
+interface Resource<V, S : ResourceScope> {
 
     /**
      * Resource's current state.
@@ -33,15 +34,14 @@ interface Resource<V> {
     val state: ResourceState<V>
 
     /**
-     * Context for `this` scope.
-     * Determines allowed [ResourceState]s to be set.
+     *
      */
-    val context: ResourceContext
+    val scope: S
 
     /**
      * Returns new copy of `this` resource.
      * Should not be used directly, because it does not check [context], thus
      * illegal resource may be set.
      */
-    fun clone(resource: ResourceState<V>): Resource<V>
+    fun clone(state: ResourceState<V>): Resource<V, S>
 }

@@ -30,4 +30,16 @@ import com.mmolosay.resource.context.ResourceContext
 object Empty : ResourceState<Nothing>, ResourceContext.Element {
 
     override val type: ResourceContext.Element = Empty
+
+    /**
+     * Produces instances of [Empty] state.
+     */
+    interface Producer {
+
+        /**
+         * Returns [Empty] instance.
+         */
+        fun <V> empty(): ResourceState<V> =
+            Empty
+    }
 }
