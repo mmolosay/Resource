@@ -28,7 +28,7 @@ import com.mmolosay.resource.context.ResourceContext
 interface ResourceState<out V> {
 
     /**
-     * Type of `this` resource in [ResourceContext].
+     * Type of `this` state in [ResourceContext].
      */
     val type: ResourceContext.Element
 

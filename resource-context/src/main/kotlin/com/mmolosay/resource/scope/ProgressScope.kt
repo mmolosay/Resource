@@ -1,8 +1,9 @@
-package com.mmolosay.resource
+package com.mmolosay.resource.scope
 
 import com.mmolosay.resource.context.ResourceContext
-import com.mmolosay.resource.scope.ResourceScope
-import com.mmolosay.resource.state.ResourceState
+import com.mmolosay.resource.state.Empty
+import com.mmolosay.resource.state.Loading
+import com.mmolosay.resource.state.Success
 
 /*
  * Copyright 2022 Mikhail Malasai
@@ -21,23 +22,16 @@ import com.mmolosay.resource.state.ResourceState
  */
 
 /**
- * Immutable combination of [ResourceContext] and [ResourceScope].
+ * [ResourceScope] with context composed of [Empty], [Loading] and [Success] states.
  *
- * Concrete implementation should check, that [state]'s type is in the [scope]'s context.
- *
- * @param V type of data, `this` resource can cary.
- * @param S scope with states producing methods, matching its context.
+ * Ideal for trivial order-wait-get flows with no chance of error.
  */
-interface Resource<V, S : ResourceScope> {
+object ProgressScope :
+    ResourceScope,
+    Empty.Producer,
+    Loading.Producer,
+    Success.Producer {
 
-    /**
-     * Resource's current state.
-     * __Must_ match [scope]'s context.
-     */
-    val state: ResourceState<V>
-
-    /**
-     * Scope.
-     */
-    val scope: S
+    override val context: ResourceContext =
+        Empty + Loading + Success
 }

@@ -1,7 +1,7 @@
 package com.mmolosay.resource
 
+import com.mmolosay.resource.scope.ResourceScope
 import com.mmolosay.resource.state.ResourceState
-import com.mmolosay.resource.context.ResourceContext
 
 /*
  * Copyright 2022 Mikhail Malasai
@@ -20,19 +20,17 @@ import com.mmolosay.resource.context.ResourceContext
  */
 
 /**
- * Concrete internal implementation of [Resource].
+ * Internal implementation of [Resource].
+ * It will check that [state] is in [scope]'s context and throw exception if it's not true.
  */
-internal data class ResourceImpl<V>(
-    override val context: ResourceContext,
+internal class ResourceImpl<V, S : ResourceScope>(
+    override val scope: S,
     override val state: ResourceState<V>
-) : Resource<V> {
+) : Resource<V, S> {
 
     init {
-        require(context.contains(state.type)) {
+        require(scope.context.contains(state.type)) {
             "ResourceContext does not have specified ResourceState type"
         }
     }
-
-    override fun clone(resource: ResourceState<V>): Resource<V> =
-        this.copy(state = resource)
 }

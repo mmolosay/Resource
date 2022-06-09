@@ -1,7 +1,6 @@
-package com.mmolosay.resource
+package com.mmolosay.resource.scope
 
-import com.mmolosay.resource.context.ResourceContext
-import com.mmolosay.resource.scope.ResourceScope
+import com.mmolosay.resource.Resource
 import com.mmolosay.resource.state.ResourceState
 
 /*
@@ -20,24 +19,20 @@ import com.mmolosay.resource.state.ResourceState
  * limitations under the License.
  */
 
-/**
- * Immutable combination of [ResourceContext] and [ResourceScope].
- *
- * Concrete implementation should check, that [state]'s type is in the [scope]'s context.
- *
- * @param V type of data, `this` resource can cary.
- * @param S scope with states producing methods, matching its context.
+/*
+ * ResourceScope extensions.
  */
-interface Resource<V, S : ResourceScope> {
 
-    /**
-     * Resource's current state.
-     * __Must_ match [scope]'s context.
-     */
-    val state: ResourceState<V>
+/**
+ * `typealias` for lambdas, scoped to some [ResourceScope] and returning [ResourceState].
+ *
+ * @param S [ResourceScope]
+ * @param V desired type for [ResourceState]
+ */
+typealias ResourceStateProducer<S, V> = S.() -> ResourceState<V>
 
-    /**
-     * Scope.
-     */
-    val scope: S
-}
+/**
+ * Creates new [Resource] instance.
+ */
+infix fun <V, S : ResourceScope> S.with(producer: ResourceStateProducer<S, V>): Resource<V, S> =
+    Resource(this, producer)

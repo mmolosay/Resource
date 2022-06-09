@@ -22,7 +22,7 @@ import com.mmolosay.resource.state.ResourceState
 /**
  * Persistent context for the [ResourceState].
  *
- * Represent collection (set) of allowed in `this` context [Element]s.
+ * Represents collection (set) of allowed in `this` context [Element]s.
  * It could be a combination of other [ResourceContext] instances.
  */
 interface ResourceContext {
@@ -53,7 +53,7 @@ interface ResourceContext {
 
     /**
      * Element of [ResourceContext].
-     * Generally, a type of resource state, which is allowed in this context.
+     * Generally, a type of [ResourceState] which is allowed in this context.
      * An element of the resource context is a singleton context by itself.
      */
     interface Element : ResourceContext {

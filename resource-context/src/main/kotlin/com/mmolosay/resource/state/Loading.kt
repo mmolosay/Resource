@@ -30,4 +30,16 @@ import com.mmolosay.resource.context.ResourceContext
 object Loading : ResourceState<Nothing>, ResourceContext.Element {
 
     override val type: ResourceContext.Element = Loading
+
+    /**
+     * Produces instances of [Loading] state.
+     */
+    interface Producer {
+
+        /**
+         * Returns [Loading] instance.
+         */
+        fun <V> loading(): ResourceState<V> =
+            Loading
+    }
 }

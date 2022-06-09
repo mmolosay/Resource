@@ -38,7 +38,7 @@ encapsulates exception cause and any useful payload, like error code.
 ## Reasons to use
 
 1. Concept is easy to understand.
-2. Implementations of `Resource` are immutable, which makes it great choice to use with such
+2. Implementations of `Resource` are immutable, which makes them a great choice to use with such
    solutions
    like [Kotlin Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/)
    and [Android LiveData](https://developer.android.com/reference/androidx/lifecycle/LiveData).
@@ -66,8 +66,16 @@ extension function instead of `when` expression.*
 
 `com.github.mmolosay.resource:resource-context:VERSION`
 
+**It is a preferred flavor of `Resource` library to use.**
+
 Philosophy of this flavor allows you to customize a context, in which your `Resource` states will
-change. See [Example of usage](#example-of-usage) section for more details.
+change. 
+
+For example, you may want your resource to only have states of `Empty` and `Success` ([ReducedScope](/resource-context/src/main/kotlin/com/mmolosay/resource/scope/ReducedScope.kt)), 
+when you're interested in data or its absence only. You will be given scope, in which you can create states for resource: 
+it will protect you from setting state out of context. Neat, isn't it? :>
+
+See [Example of usage](#example-of-usage) section for more details.
 
 ## Installation
 
@@ -135,7 +143,7 @@ Full sample is in [sample.resource-context](/sample.resource-context/src/main/ko
 
 ```kotlin
 // Declare your resource flow
-val flow = MutableStateFlow(resource<YourData> { empty() })
+val flow = MutableStateFlow(resource<YourData>()) // empty by default
 ...
 // Change values
 fun getData() {
