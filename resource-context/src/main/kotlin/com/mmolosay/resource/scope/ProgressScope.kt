@@ -23,6 +23,7 @@ import com.mmolosay.resource.state.Success
 
 /**
  * [ResourceScope] with context composed of [Empty], [Loading] and [Success] states.
+ *
  * Ideal for trivial order-wait-get flows with no chance of error.
  */
 object ProgressScope :

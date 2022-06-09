@@ -21,20 +21,23 @@ import com.mmolosay.resource.state.ResourceState
  */
 
 /**
- * Combination of [ResourceContext] and actual [ResourceState] instance, matching the context.
+ * Immutable combination of [ResourceContext] and [ResourceScope].
  *
- * Concrete implementation should check, that [state]'s type is in the [context].
+ * Concrete implementation should check, that [state]'s type is in the [scope]'s context.
+ *
+ * @param V type of data, `this` resource can cary.
+ * @param S scope with states producing methods, matching its context.
  */
 interface Resource<V, S : ResourceScope> {
 
     /**
      * Resource's current state.
-     * __Must_ match [context].
+     * __Must_ match [scope]'s context.
      */
     val state: ResourceState<V>
 
     /**
-     *
+     * Scope.
      */
     val scope: S
 }

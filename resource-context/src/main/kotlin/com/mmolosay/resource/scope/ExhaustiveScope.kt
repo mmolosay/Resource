@@ -24,6 +24,7 @@ import com.mmolosay.resource.state.Success
 
 /**
  * [ResourceScope] with context composed of [Empty], [Loading], [Success] and [Failure] states.
+ *
  * Ideal for all kinds of data fetching and other async processes,
  * like getting data from remote or local data source.
  */

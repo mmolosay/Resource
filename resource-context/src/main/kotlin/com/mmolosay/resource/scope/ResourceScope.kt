@@ -18,6 +18,13 @@ import com.mmolosay.resource.context.ResourceContext
  * limitations under the License.
  */
 
+/**
+ * Carrier of [ResourceContext].
+ *
+ * Implementations will also implement so-called "producers" from resource states,
+ * allowed in `this` [context], so it can be used as `Kotlin` `scope` of lambdas which create
+ * resource states.
+ */
 interface ResourceScope {
 
     val context: ResourceContext
