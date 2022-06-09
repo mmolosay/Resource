@@ -38,7 +38,7 @@ encapsulates exception cause and any useful payload, like error code.
 ## Reasons to use
 
 1. Concept is easy to understand.
-2. Implementations of `Resource` are immutable, which makes it great choice to use with such
+2. Implementations of `Resource` are immutable, which makes them a great choice to use with such
    solutions
    like [Kotlin Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/)
    and [Android LiveData](https://developer.android.com/reference/androidx/lifecycle/LiveData).
