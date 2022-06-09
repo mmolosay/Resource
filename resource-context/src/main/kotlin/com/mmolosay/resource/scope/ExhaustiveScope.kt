@@ -1,5 +1,6 @@
-package com.mmolosay.resource.context
+package com.mmolosay.resource.scope
 
+import com.mmolosay.resource.context.ResourceContext
 import com.mmolosay.resource.state.Empty
 import com.mmolosay.resource.state.Failure
 import com.mmolosay.resource.state.Loading
@@ -21,27 +22,19 @@ import com.mmolosay.resource.state.Success
  * limitations under the License.
  */
 
-/*
- * Resource context templates.
- */
-
 /**
- * [ResourceContext] composed of [Empty] and [Success] states.
+ * [ResourceScope] with context composed of [Empty], [Loading], [Success] and [Failure] states.
+ *
+ * Ideal for all kinds of data fetching and other async processes,
+ * like getting data from remote or local data source.
  */
-val ReducedContext = Empty + Success
+object ExhaustiveScope :
+    ResourceScope,
+    Empty.Producer,
+    Loading.Producer,
+    Success.Producer,
+    Failure.Producer {
 
-/**
- * [ResourceContext] composed of [Empty] and [Success] states.
- */
-val ProgressContext = Empty + Loading + Success
-
-/**
- * [ResourceContext] composed of [Empty], [Loading], [Success] and [Failure] states.
- */
-val ExhaustiveContext = Empty + Loading + Success + Failure
-
-/**
- * Default [ResourceContext] to be used in builder functions.
- * You might want to override it with your own one.
- */
-var DefaultContext = ExhaustiveContext
+    override val context: ResourceContext =
+        Empty + Loading + Success + Failure
+}

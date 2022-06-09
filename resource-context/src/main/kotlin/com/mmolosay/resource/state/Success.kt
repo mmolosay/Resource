@@ -26,4 +26,16 @@ import com.mmolosay.resource.context.ResourceContext
 class Success<out V>(val value: V) : AbstractResourceState<V>(Element) {
 
     companion object Element : ResourceContext.Element
+
+    /**
+     * Produces instances of [Success] state.
+     */
+    interface Producer {
+
+        /**
+         * Creates new [Success] instance.
+         */
+        fun <V> success(value: V): ResourceState<V> =
+            Success(value)
+    }
 }

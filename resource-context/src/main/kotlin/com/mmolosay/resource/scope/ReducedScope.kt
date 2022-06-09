@@ -1,8 +1,8 @@
-package com.mmolosay.resource
+package com.mmolosay.resource.scope
 
 import com.mmolosay.resource.context.ResourceContext
-import com.mmolosay.resource.scope.ResourceScope
-import com.mmolosay.resource.state.ResourceState
+import com.mmolosay.resource.state.Empty
+import com.mmolosay.resource.state.Success
 
 /*
  * Copyright 2022 Mikhail Malasai
@@ -21,23 +21,15 @@ import com.mmolosay.resource.state.ResourceState
  */
 
 /**
- * Immutable combination of [ResourceContext] and [ResourceScope].
+ * [ResourceScope] with context composed of [Empty] and [Success] states.
  *
- * Concrete implementation should check, that [state]'s type is in the [scope]'s context.
- *
- * @param V type of data, `this` resource can cary.
- * @param S scope with states producing methods, matching its context.
+ * Ideal for cases in which you only interested in data or its absence.
  */
-interface Resource<V, S : ResourceScope> {
+object ReducedScope :
+    ResourceScope,
+    Empty.Producer,
+    Success.Producer {
 
-    /**
-     * Resource's current state.
-     * __Must_ match [scope]'s context.
-     */
-    val state: ResourceState<V>
-
-    /**
-     * Scope.
-     */
-    val scope: S
+    override val context: ResourceContext =
+        Empty + Success
 }

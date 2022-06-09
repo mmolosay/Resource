@@ -1,8 +1,6 @@
-package com.mmolosay.resource
+package com.mmolosay.resource.scope
 
 import com.mmolosay.resource.context.ResourceContext
-import com.mmolosay.resource.scope.ResourceScope
-import com.mmolosay.resource.state.ResourceState
 
 /*
  * Copyright 2022 Mikhail Malasai
@@ -21,23 +19,21 @@ import com.mmolosay.resource.state.ResourceState
  */
 
 /**
- * Immutable combination of [ResourceContext] and [ResourceScope].
+ * Carrier of [ResourceContext].
  *
- * Concrete implementation should check, that [state]'s type is in the [scope]'s context.
+ * Implementations will also implement so-called "producers" from resource states,
+ * allowed in `this` [context], so it can be used as `Kotlin` `scope` of lambdas which create
+ * resource states.
  *
- * @param V type of data, `this` resource can cary.
- * @param S scope with states producing methods, matching its context.
+ * Implementing producers, which produce resource states not allowed in the [context] will
+ * cause an exception in runtime.
+ * See examples of scopes below as reference for implementing your own one.
+ *
+ * @see ReducedScope
+ * @see ProgressScope
+ * @see ExhaustiveScope
  */
-interface Resource<V, S : ResourceScope> {
+interface ResourceScope {
 
-    /**
-     * Resource's current state.
-     * __Must_ match [scope]'s context.
-     */
-    val state: ResourceState<V>
-
-    /**
-     * Scope.
-     */
-    val scope: S
+    val context: ResourceContext
 }
