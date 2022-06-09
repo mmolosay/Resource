@@ -24,6 +24,14 @@ import com.mmolosay.resource.context.ResourceContext
  * Implementations will also implement so-called "producers" from resource states,
  * allowed in `this` [context], so it can be used as `Kotlin` `scope` of lambdas which create
  * resource states.
+ *
+ * Implementing producers, which produce resource states not allowed in the [context] will
+ * cause an exception in runtime.
+ * See examples of scopes below as reference for implementing your own one.
+ *
+ * @see ReducedScope
+ * @see ProgressScope
+ * @see ExhaustiveScope
  */
 interface ResourceScope {
 
