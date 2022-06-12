@@ -35,6 +35,9 @@ It represents some explicit state of dynamically obtained data. For instance, it
 , `Loading`, `Success` or `Failure` state, where `Success` carries obtained data and `Failure`
 encapsulates exception cause and any useful payload, like error code.
 
+Besides, `Resource` is a highly customizable [state machine](https://en.wikipedia.org/wiki/Finite-state_machine) 
+and may be used as a flexible tool for managing state.
+
 ## Reasons to use
 
 1. Concept is easy to understand.
