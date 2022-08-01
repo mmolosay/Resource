@@ -8,7 +8,7 @@ Handy states for dynamically obtained data.
 </br>
 
 <div align="center">
-   <img src="https://user-images.githubusercontent.com/32337243/182113675-236146ec-89d3-44e1-a203-abbae5c8b7ba.png" width="65%">
+   <img src="https://user-images.githubusercontent.com/32337243/182113675-236146ec-89d3-44e1-a203-abbae5c8b7ba.png" width="80%">
 </div>
 
 </br>
