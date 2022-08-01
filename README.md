@@ -7,8 +7,7 @@ Handy states for dynamically obtained data.
 
 </br>
 
-![image](https://user-images.githubusercontent.com/32337243/182116239-3375242d-314e-445b-815c-793b64b5c615.png)
-
+![image](https://user-images.githubusercontent.com/32337243/182116931-548deb23-4fcb-4539-9689-37d2cb2613b6.png)
 
 </br>
 
