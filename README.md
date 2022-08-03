@@ -9,7 +9,6 @@ Handy states for dynamically obtained data.
 
 ![image](https://user-images.githubusercontent.com/32337243/182117336-56dbf954-065c-4951-b2dd-a577c30d995d.png)
 
-
 </br>
 
 ## Table of contents
@@ -48,13 +47,12 @@ and may be used as a flexible tool for managing state.
 ## Reasons to use
 
 1. Concept is easy to understand.
-2. Implementations of `Resource` are immutable, which makes them a great choice to use with such
-   solutions
-   like [Kotlin Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/)
+2. Library is pleasant to use: it's extendable, customizable and has a lot out-of-the-box features.
+3. Implementations of `Resource` are immutable, which makes them a great choice to use with such
+   solutions like [Kotlin Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/)
    and [Android LiveData](https://developer.android.com/reference/androidx/lifecycle/LiveData).
-3. Has a lot out-of-the-box features implemented with Kotlin extension functions.
-3. Small source code size.
-4. 100% documented.
+4. Small source code size.
+5. 100% documented.
 
 ## Artifacts
 
