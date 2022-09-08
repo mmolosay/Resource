@@ -25,20 +25,22 @@ import com.mmolosay.resource.util.UnknownOriginException
  * @param cause [Throwable] caught.
  * @param payload some useful data, like int code or string message.
  */
-class Failure<out P>(val cause: Throwable, val payload: P? = null) :
-    AbstractResourceState<Nothing>(Element) {
+public class Failure<out P>(
+    public val cause: Throwable,
+    public val payload: P? = null
+) : AbstractResourceState<Nothing>(Element) {
 
-    companion object Element : ResourceContext.Element
+    public companion object Element : ResourceContext.Element
 
     /**
      * Produces instances of [Failure] state.
      */
-    interface Producer {
+    public interface Producer {
 
         /**
          * Creates new [Failure] instance.
          */
-        fun <V, P> failure(
+        public fun <V, P> failure(
             cause: Throwable,
             payload: P?
         ): ResourceState<V> =
@@ -47,14 +49,14 @@ class Failure<out P>(val cause: Throwable, val payload: P? = null) :
         /**
          * Creates new [Failure] instance without [payload].
          */
-        fun <V> failure(cause: Throwable): ResourceState<V> =
+        public  fun <V> failure(cause: Throwable): ResourceState<V> =
             Failure<Nothing>(cause)
 
         /**
          * Creates new [Failure] instance without [payload].
          * [Failure.cause] will be a [UnknownOriginException] with [cause] as its message.
          */
-        fun <V> failure(cause: String): ResourceState<V> =
+        public fun <V> failure(cause: String): ResourceState<V> =
             Failure<Nothing>(UnknownOriginException(cause))
 
     }

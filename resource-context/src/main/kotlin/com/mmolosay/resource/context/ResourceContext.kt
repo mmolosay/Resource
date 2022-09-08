@@ -25,24 +25,24 @@ import com.mmolosay.resource.state.ResourceState
  * Represents collection (set) of allowed in `this` context [Element]s.
  * It could be a combination of other [ResourceContext] instances.
  */
-interface ResourceContext {
+public interface ResourceContext {
 
     /**
      * Checks if the specified [element] is contained in `this` context.
      */
-    fun contains(element: Element): Boolean
+    public fun contains(element: Element): Boolean
 
     /**
      * Accumulates entries of `this` context starting with [initial] value and applying [operation]
      * from left to right to current accumulator value and each element of `this` context.
      */
-    fun <R> fold(initial: R, operation: (R, Element) -> R): R
+    public fun <R> fold(initial: R, operation: (R, Element) -> R): R
 
     /**
      * Combines specified [context] and `this` one.
      * Result is a [ResourceContext] with [Element]s from both of them with all duplicates dropped.
      */
-    operator fun plus(context: ResourceContext): ResourceContext =
+    public operator fun plus(context: ResourceContext): ResourceContext =
         context.fold(this) { acc, cur ->
             if (acc.contains(cur)) {
                 acc
@@ -56,7 +56,7 @@ interface ResourceContext {
      * Generally, a type of [ResourceState] which is allowed in this context.
      * An element of the resource context is a singleton context by itself.
      */
-    interface Element : ResourceContext {
+    public interface Element : ResourceContext {
 
         // region ResourceContext
 

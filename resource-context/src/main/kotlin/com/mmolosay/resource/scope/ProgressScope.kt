@@ -26,7 +26,7 @@ import com.mmolosay.resource.state.Success
  *
  * Ideal for trivial order-wait-get flows with no chance of error.
  */
-object ProgressScope :
+public object ProgressScope :
     ResourceScope,
     Empty.Producer,
     Loading.Producer,

@@ -32,25 +32,25 @@ import com.mmolosay.resource.util.UnknownOriginException
 /**
  * Returns [Empty] instance.
  */
-fun <V> Resource.Companion.empty(): Resource<V> =
+public fun <V> Resource.Companion.empty(): Resource<V> =
     Empty
 
 /**
  * Returns [Loading] instance.
  */
-fun <V> Resource.Companion.loading(): Resource<V> =
+public fun <V> Resource.Companion.loading(): Resource<V> =
     Loading
 
 /**
  * Returns new [Success] instance.
  */
-fun <V> Resource.Companion.success(value: V): Resource<V> =
+public fun <V> Resource.Companion.success(value: V): Resource<V> =
     Success(value)
 
 /**
  * Returns new [Failure] instance.
  */
-fun <V, P> Resource.Companion.failure(
+public fun <V, P> Resource.Companion.failure(
     cause: Throwable,
     payload: P?
 ): Resource<V> =
@@ -59,14 +59,14 @@ fun <V, P> Resource.Companion.failure(
 /**
  * Returns new [Failure] instance without [Failure.payload].
  */
-fun <V> Resource.Companion.failure(cause: Throwable): Resource<V> =
+public fun <V> Resource.Companion.failure(cause: Throwable): Resource<V> =
     Failure<Nothing>(cause)
 
 /**
  * Returns new [Failure] instance without [Failure.payload].
  * [Failure.cause] will be a [UnknownOriginException] with [cause] as its message.
  */
-fun <V> Resource.Companion.failure(cause: String): Resource<V> =
+public fun <V> Resource.Companion.failure(cause: String): Resource<V> =
     Failure<Nothing>(UnknownOriginException(cause))
 
 // endregion

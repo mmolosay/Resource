@@ -21,4 +21,4 @@ package com.mmolosay.resource.util
  *
  * @param cause the detail message.
  */
-class UnknownOriginException(cause: String) : RuntimeException(cause)
+public class UnknownOriginException(cause: String) : RuntimeException(cause)

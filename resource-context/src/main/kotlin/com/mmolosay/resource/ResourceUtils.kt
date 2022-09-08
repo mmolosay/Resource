@@ -27,17 +27,17 @@ import com.mmolosay.resource.scope.*
 /**
  * `typealias` for [Resource] of [ReducedScope].
  */
-typealias ReducedResource<V> = Resource<V, ReducedScope>
+public typealias ReducedResource<V> = Resource<V, ReducedScope>
 
 /**
  * `typealias` for [Resource] of [ProgressScope].
  */
-typealias ProgressResource<V> = Resource<V, ProgressScope>
+public typealias ProgressResource<V> = Resource<V, ProgressScope>
 
 /**
  * `typealias` for [Resource] of [ExhaustiveScope].
  */
-typealias ExhaustiveResource<V> = Resource<V, ExhaustiveScope>
+public typealias ExhaustiveResource<V> = Resource<V, ExhaustiveScope>
 
 // endregion
 
@@ -46,7 +46,7 @@ typealias ExhaustiveResource<V> = Resource<V, ExhaustiveScope>
 /**
  * Creates new [Resource] of [ReducedScope] with empty state by default.
  */
-fun <V> ReducedResource(
+public fun <V> ReducedResource(
     producer: ResourceStateProducer<ReducedScope, V> = { empty() }
 ): ReducedResource<V> =
     ReducedScope with producer
@@ -54,7 +54,7 @@ fun <V> ReducedResource(
 /**
  * Creates new [Resource] of [ProgressScope] with empty state by default.
  */
-fun <V> ProgressResource(
+public fun <V> ProgressResource(
     producer: ResourceStateProducer<ProgressScope, V> = { empty() }
 ): ProgressResource<V> =
     ProgressScope with producer
@@ -62,7 +62,7 @@ fun <V> ProgressResource(
 /**
  * Creates new [Resource] of [ExhaustiveScope] with empty state by default.
  */
-fun <V> ExhaustiveResource(
+public fun <V> ExhaustiveResource(
     producer: ResourceStateProducer<ExhaustiveScope, V> = { empty() }
 ): ExhaustiveResource<V> =
     ExhaustiveScope with producer
@@ -70,7 +70,7 @@ fun <V> ExhaustiveResource(
 /**
  * Shorthand for [ExhaustiveResource] builder.
  */
-fun <V> resource(
+public fun <V> resource(
     producer: ResourceStateProducer<ExhaustiveScope, V> = { empty() }
 ): ExhaustiveResource<V> =
     ExhaustiveScope with producer
@@ -78,7 +78,7 @@ fun <V> resource(
 /**
  * Creates new [Resource] instance.
  */
-fun <V, S : ResourceScope> Resource(
+public fun <V, S : ResourceScope> Resource(
     scope: S,
     producer: ResourceStateProducer<S, V>
 ): Resource<V, S> =

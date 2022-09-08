@@ -27,19 +27,19 @@ import com.mmolosay.resource.context.ResourceContext
  * AbstractResource can not be used as superclass, because it requires passing key, which is
  * this object itself and not initialized at the moment yet.
  */
-object Loading : ResourceState<Nothing>, ResourceContext.Element {
+public object Loading : ResourceState<Nothing>, ResourceContext.Element {
 
     override val type: ResourceContext.Element = Loading
 
     /**
      * Produces instances of [Loading] state.
      */
-    interface Producer {
+    public interface Producer {
 
         /**
          * Returns [Loading] instance.
          */
-        fun <V> loading(): ResourceState<V> =
+        public fun <V> loading(): ResourceState<V> =
             Loading
     }
 }

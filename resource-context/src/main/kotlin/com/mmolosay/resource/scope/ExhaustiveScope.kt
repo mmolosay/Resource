@@ -28,7 +28,7 @@ import com.mmolosay.resource.state.Success
  * Ideal for all kinds of data fetching and other async processes,
  * like getting data from remote or local data source.
  */
-object ExhaustiveScope :
+public object ExhaustiveScope :
     ResourceScope,
     Empty.Producer,
     Loading.Producer,
