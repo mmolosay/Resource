@@ -28,16 +28,16 @@ import com.mmolosay.resource.state.ResourceState
  * @param V type of data, `this` resource can cary.
  * @param S scope with states producing methods, matching its context.
  */
-interface Resource<V, S : ResourceScope> {
+public interface Resource<V, S : ResourceScope> {
 
     /**
      * Resource's current state.
      * __Must_ match [scope]'s context.
      */
-    val state: ResourceState<V>
+    public val state: ResourceState<V>
 
     /**
      * Scope.
      */
-    val scope: S
+    public val scope: S
 }

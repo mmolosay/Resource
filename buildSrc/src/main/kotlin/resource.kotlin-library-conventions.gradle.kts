@@ -1,7 +1,13 @@
+import org.jetbrains.kotlin.gradle.dsl.ExplicitApiMode
+
 plugins {
     id("resource.kotlin-common-conventions")
     `java-library`
     `maven-publish`
+}
+
+kotlin {
+    explicitApi = ExplicitApiMode.Strict
 }
 
 configure<PublishingExtension> {

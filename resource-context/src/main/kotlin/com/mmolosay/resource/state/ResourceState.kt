@@ -25,12 +25,12 @@ import com.mmolosay.resource.context.ResourceContext
  * it is __strongly recommended__ to use `non-nullable` ones, since success state with `null` as
  * its value may be confusing. State is covariant in its data type.
  */
-interface ResourceState<out V> {
+public interface ResourceState<out V> {
 
     /**
      * Type of `this` state in [ResourceContext].
      */
-    val type: ResourceContext.Element
+    public val type: ResourceContext.Element
 
-    companion object
+    public companion object
 }

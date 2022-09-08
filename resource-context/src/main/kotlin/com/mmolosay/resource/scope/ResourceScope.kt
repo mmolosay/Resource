@@ -33,7 +33,7 @@ import com.mmolosay.resource.context.ResourceContext
  * @see ProgressScope
  * @see ExhaustiveScope
  */
-interface ResourceScope {
+public interface ResourceScope {
 
-    val context: ResourceContext
+    public val context: ResourceContext
 }

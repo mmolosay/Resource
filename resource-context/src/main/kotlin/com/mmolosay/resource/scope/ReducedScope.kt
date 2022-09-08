@@ -25,7 +25,7 @@ import com.mmolosay.resource.state.Success
  *
  * Ideal for cases in which you only interested in data or its absence.
  */
-object ReducedScope :
+public object ReducedScope :
     ResourceScope,
     Empty.Producer,
     Success.Producer {

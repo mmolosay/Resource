@@ -29,10 +29,10 @@ import com.mmolosay.resource.state.ResourceState
  * @param S [ResourceScope]
  * @param V desired type for [ResourceState]
  */
-typealias ResourceStateProducer<S, V> = S.() -> ResourceState<V>
+public typealias ResourceStateProducer<S, V> = S.() -> ResourceState<V>
 
 /**
  * Creates new [Resource] instance.
  */
-infix fun <V, S : ResourceScope> S.with(producer: ResourceStateProducer<S, V>): Resource<V, S> =
+public infix fun <V, S : ResourceScope> S.with(producer: ResourceStateProducer<S, V>): Resource<V, S> =
     Resource(this, producer)

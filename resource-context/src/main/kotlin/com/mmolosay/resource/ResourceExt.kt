@@ -32,10 +32,10 @@ import com.mmolosay.resource.state.Success
  * Invokes one of specified callbacks on receiver [Resource] depending on
  * its [Resource.state] instance.
  */
-inline fun <V> Resource<V, ReducedScope>.invoke(
+public inline fun <V> Resource<V, ReducedScope>.invoke(
     onEmpty: () -> Unit = {},
     onSuccess: (value: V) -> Unit = {}
-) =
+): Unit =
     when (val s = this.state) {
         is Empty -> onEmpty()
         is Success -> onSuccess(s.value)
@@ -46,11 +46,11 @@ inline fun <V> Resource<V, ReducedScope>.invoke(
  * Invokes one of specified callbacks on receiver [Resource] depending on
  * its [Resource.state] instance.
  */
-inline fun <V> Resource<V, ProgressScope>.invoke(
+public inline fun <V> Resource<V, ProgressScope>.invoke(
     onEmpty: () -> Unit = {},
     onLoading: () -> Unit = {},
     onSuccess: (value: V) -> Unit = {}
-) =
+): Unit =
     when (val s = this.state) {
         is Empty -> onEmpty()
         is Loading -> onLoading()
@@ -62,12 +62,12 @@ inline fun <V> Resource<V, ProgressScope>.invoke(
  * Invokes one of specified callbacks on receiver [Resource] depending on
  * its [Resource.state] instance.
  */
-inline fun <V> Resource<V, ExhaustiveScope>.invoke(
+public inline fun <V> Resource<V, ExhaustiveScope>.invoke(
     onEmpty: () -> Unit = {},
     onLoading: () -> Unit = {},
     onSuccess: (value: V) -> Unit = {},
     onFailure: (cause: Throwable, payload: Any?) -> Unit = { _, _ -> },
-) =
+): Unit =
     when (val s = this.state) {
         is Empty -> onEmpty()
         is Loading -> onLoading()
@@ -81,5 +81,5 @@ inline fun <V> Resource<V, ExhaustiveScope>.invoke(
 /**
  * Creates new [Resource] instance of receiver's scope and state from specified [producer].
  */
-infix fun <V, S : ResourceScope> Resource<V, S>.with(producer: ResourceStateProducer<S, V>): Resource<V, S> =
+public infix fun <V, S : ResourceScope> Resource<V, S>.with(producer: ResourceStateProducer<S, V>): Resource<V, S> =
     this.scope with producer
