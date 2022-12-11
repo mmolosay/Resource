@@ -27,9 +27,8 @@ Handy states for dynamically obtained data.
 ## Problem to solve
 
 In contemporary software development a huge number of operations and their results are asynchronous.
-For instance, you're obtaining some data from remote server. Let's say, you're creating some kind
-of `Observable` and observe its `value` changes, which is initially `null`. Next you trigger
-some `fetchRemoteData()` and wait.
+Imagine, you're obtaining a data from a local storage. Let's say, you've created some kind
+of `Observable` and now observe its `value`, which is initially `null`. Next you trigger `fetchData()` and wait.
 
 Five seconds have passed, but `value` is still `null`. What does it mean? Was there some error? Was
 the result `null`? Or connection is still being established, and you have nothing to worry about?
@@ -39,7 +38,7 @@ in.
 
 It represents some explicit state of dynamically obtained data. For instance, it could be `Empty`
 , `Loading`, `Success` or `Failure` state, where `Success` carries obtained data and `Failure`
-encapsulates exception cause and any useful payload, like error code.
+encapsulates exception cause.
 
 Besides, `Resource` is a highly customizable [state machine](https://en.wikipedia.org/wiki/Finite-state_machine) 
 and may be used as a flexible tool for managing state.
@@ -74,14 +73,14 @@ extension function instead of `when` expression.*
 
 `com.github.mmolosay.resource:resource-context:VERSION`
 
-**It is a preferred flavor of `Resource` library to use.**
+**It is a preferred artifact of `Resource` library to use.**
 
-Philosophy of this flavor allows you to customize a context, in which your `Resource` states will
+Philosophy of this artifact allows you to customize a context, in which your `Resource` states will
 change. 
 
 For example, you may want your resource to only have states of `Empty` and `Success` ([ReducedScope](/resource-context/src/main/kotlin/com/mmolosay/resource/scope/ReducedScope.kt)), 
 when you're interested in data or its absence only. You will be given scope, in which you can create states for resource: 
-it will protect you from setting state out of context. Neat, isn't it? :>
+it will protect you from setting state out of context.
 
 See [Example of usage](#example-of-usage) section for more details.
 
@@ -140,7 +139,7 @@ flow.collect { resource ->
         onEmpty = { /* update UI, like showing some message */ },
         onLoading = { /* update UI, like showing progress bar */ },
         onSuccess = { data -> /* populate data to UI */ },
-        onFailure = { payload, cause -> /* display notification on UI */ }
+        onFailure = { cause -> /* display notification on UI */ }
     )
 }
 ```
@@ -172,7 +171,7 @@ flow.collect { resource ->
         onEmpty = { /* update UI, like showing some message */ },
         onLoading = { /* update UI, like showing progress bar */ },
         onSuccess = { data -> /* populate data to UI */ },
-        onFailure = { payload, cause -> /* display notification on UI */ }
+        onFailure = { cause -> /* display notification on UI */ }
     )
 }
 ```
