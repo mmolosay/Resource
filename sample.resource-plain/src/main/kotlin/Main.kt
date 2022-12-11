@@ -27,7 +27,7 @@ fun resourcePlainSample() =
                     onEmpty = { println("empty") },
                     onLoading = { println("loading") },
                     onSuccess = { println("success, data=$it") },
-                    onFailure = { cause, _ -> println("failure, cause=$cause") }
+                    onFailure = { println("failure, cause=$it") }
                 )
             }
         }

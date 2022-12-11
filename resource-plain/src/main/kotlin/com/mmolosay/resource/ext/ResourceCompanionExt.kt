@@ -2,10 +2,9 @@ package com.mmolosay.resource.ext
 
 import com.mmolosay.resource.Resource
 import com.mmolosay.resource.Resource.Empty
+import com.mmolosay.resource.Resource.Failure
 import com.mmolosay.resource.Resource.Loading
 import com.mmolosay.resource.Resource.Success
-import com.mmolosay.resource.Resource.Failure
-import com.mmolosay.resource.util.UnknownOriginException
 
 /*
  * Copyright 2022 Mikhail Malasai
@@ -42,31 +41,22 @@ public fun <V> Resource.Companion.loading(): Resource<V> =
     Loading
 
 /**
- * Returns new [Success] instance.
+ * Creates new [Success] instance out of specified [value].
  */
 public fun <V> Resource.Companion.success(value: V): Resource<V> =
     Success(value)
 
 /**
- * Returns new [Failure] instance.
+ * Creates new [Failure] instance out of [cause] exception.
  */
-public fun <V, P> Resource.Companion.failure(
-    cause: Throwable,
-    payload: P?
-): Resource<V> =
-    Failure(cause, payload)
+public fun <V> Resource.Companion.failure(cause: Exception): Resource<V> =
+    Failure(cause)
 
 /**
- * Returns new [Failure] instance without [Failure.payload].
- */
-public fun <V> Resource.Companion.failure(cause: Throwable): Resource<V> =
-    Failure<Nothing>(cause)
-
-/**
- * Returns new [Failure] instance without [Failure.payload].
- * [Failure.cause] will be a [UnknownOriginException] with [cause] as its message.
+ * Creates new [Failure] out of [cause] string.
+ * [Failure.cause] will be an [Exception] with [cause] for its message.
  */
 public fun <V> Resource.Companion.failure(cause: String): Resource<V> =
-    Failure<Nothing>(UnknownOriginException(cause))
+    Failure(Exception(cause))
 
 // endregion
