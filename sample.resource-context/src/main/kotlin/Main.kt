@@ -1,5 +1,7 @@
-import com.mmolosay.resource.*
+import com.mmolosay.resource.Resource
 import com.mmolosay.resource.context.ResourceContext
+import com.mmolosay.resource.invoke
+import com.mmolosay.resource.resource
 import com.mmolosay.resource.scope.ExhaustiveScope
 import com.mmolosay.resource.scope.ResourceScope
 import com.mmolosay.resource.scope.ResourceStateProducer
@@ -7,6 +9,7 @@ import com.mmolosay.resource.state.AbstractResourceState
 import com.mmolosay.resource.state.Empty
 import com.mmolosay.resource.state.Loading
 import com.mmolosay.resource.state.ResourceState
+import com.mmolosay.resource.with
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
@@ -25,11 +28,13 @@ fun main() {
                 defaultContextSample()
                 break
             }
+
             2 -> {
                 println("Demonstration custom resource context:")
                 customContextSample()
                 break
             }
+
             else -> println("Invalid input. Try again.")
         }
     }
@@ -47,7 +52,7 @@ private fun defaultContextSample() =
                     onEmpty = { println("empty") },
                     onLoading = { println("loading") },
                     onSuccess = { println("success, data=$it") },
-                    onFailure = { cause, _ -> println("failure, cause=$cause") }
+                    onFailure = { println("failure, cause=$it") }
                 )
             }
         }
@@ -59,8 +64,6 @@ private fun defaultContextSample() =
  */
 private fun customContextSample() =
     runBlocking {
-        val a = ExhaustiveResource<String> { empty() }
-        val b: ExhaustiveResource<String> = resource()
         val flow = MutableStateFlow(ReachingResource())
         launch {
             flow.collect { resource ->

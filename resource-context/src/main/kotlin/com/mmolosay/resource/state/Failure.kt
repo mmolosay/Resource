@@ -1,7 +1,6 @@
 package com.mmolosay.resource.state
 
 import com.mmolosay.resource.context.ResourceContext
-import com.mmolosay.resource.util.UnknownOriginException
 
 /*
  * Copyright 2022 Mikhail Malasai
@@ -22,12 +21,10 @@ import com.mmolosay.resource.util.UnknownOriginException
 /**
  * Represents failure, occurred while obtaining data.
  *
- * @param cause [Throwable] caught.
- * @param payload some useful data, like int code or string message.
+ * @param cause [Exception] caught.
  */
-public class Failure<out P>(
-    public val cause: Throwable,
-    public val payload: P? = null
+public class Failure(
+    public val cause: Exception,
 ) : AbstractResourceState<Nothing>(Element) {
 
     public companion object Element : ResourceContext.Element
@@ -38,26 +35,17 @@ public class Failure<out P>(
     public interface Producer {
 
         /**
-         * Creates new [Failure] instance.
+         * Creates new [Failure] out of [cause] exception.
          */
-        public fun <V, P> failure(
-            cause: Throwable,
-            payload: P?
-        ): ResourceState<V> =
-            Failure(cause, payload)
+        public fun <V> failure(cause: Exception): ResourceState<V> =
+            Failure(cause)
 
         /**
-         * Creates new [Failure] instance without [payload].
-         */
-        public  fun <V> failure(cause: Throwable): ResourceState<V> =
-            Failure<Nothing>(cause)
-
-        /**
-         * Creates new [Failure] instance without [payload].
-         * [Failure.cause] will be a [UnknownOriginException] with [cause] as its message.
+         * Creates new [Failure] out of [cause] string.
+         * [Failure.cause] will be an [Exception] with [cause] for its message.
          */
         public fun <V> failure(cause: String): ResourceState<V> =
-            Failure<Nothing>(UnknownOriginException(cause))
+            Failure(Exception(cause))
 
     }
 }

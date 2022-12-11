@@ -1,5 +1,9 @@
 import com.mmolosay.resource.Resource
-import com.mmolosay.resource.ext.*
+import com.mmolosay.resource.ext.empty
+import com.mmolosay.resource.ext.failure
+import com.mmolosay.resource.ext.invoke
+import com.mmolosay.resource.ext.loading
+import com.mmolosay.resource.ext.success
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update

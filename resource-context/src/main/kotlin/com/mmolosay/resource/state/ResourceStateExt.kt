@@ -42,7 +42,7 @@ public val ResourceState<*>.isSuccess: Boolean
  * Determines whether receiver [ResourceState] is an instance of [Failure] state.
  */
 public val ResourceState<*>.isFailure: Boolean
-    get() = (this is Failure<*>)
+    get() = (this is Failure)
 
 /**
  *
@@ -91,21 +91,8 @@ public inline fun <V, R> ResourceState<V>.ifSuccess(action: (value: V) -> R): R?
  * Returns result of executing specified [action], if receiver [ResourceState] is an instance
  * of [Failure] state, or `null` otherwise.
  */
-public inline fun <V, P, R> ResourceState<V>.ifFailure(action: (cause: Throwable, payload: P?) -> R): R? =
-    @Suppress("UNCHECKED_CAST")
+public inline fun <V, R> ResourceState<V>.ifFailure(action: (cause: Throwable) -> R): R? =
     when (this) {
-        is Failure<*> -> action(cause, payload as? P?)
-        else -> null
-    }
-
-/**
- * Returns result of executing specified [action], if receiver [ResourceState] is an instance
- * of [Failure] state, or `null` otherwise.
- *
- * Payload-free version of [ResourceState.ifFailure].
- */
-public inline fun <V, P, R> ResourceState<V>.ifFailure(action: (cause: Throwable) -> R): R? =
-    when (this) {
-        is Failure<*> -> action(cause)
+        is Failure -> action(cause)
         else -> null
     }

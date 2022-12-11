@@ -1,6 +1,11 @@
 package com.mmolosay.resource
 
-import com.mmolosay.resource.scope.*
+import com.mmolosay.resource.scope.ExhaustiveScope
+import com.mmolosay.resource.scope.ProgressScope
+import com.mmolosay.resource.scope.ReducedScope
+import com.mmolosay.resource.scope.ResourceScope
+import com.mmolosay.resource.scope.ResourceStateProducer
+import com.mmolosay.resource.scope.with
 import com.mmolosay.resource.state.Empty
 import com.mmolosay.resource.state.Failure
 import com.mmolosay.resource.state.Loading
@@ -66,13 +71,13 @@ public inline fun <V> Resource<V, ExhaustiveScope>.invoke(
     onEmpty: () -> Unit = {},
     onLoading: () -> Unit = {},
     onSuccess: (value: V) -> Unit = {},
-    onFailure: (cause: Throwable, payload: Any?) -> Unit = { _, _ -> },
+    onFailure: (cause: Throwable) -> Unit = {},
 ): Unit =
     when (val s = this.state) {
         is Empty -> onEmpty()
         is Loading -> onLoading()
         is Success -> onSuccess(s.value)
-        is Failure<*> -> onFailure(s.cause, s.payload)
+        is Failure -> onFailure(s.cause)
         else -> throw IllegalStateException("unreachable in runtime")
     }
 
