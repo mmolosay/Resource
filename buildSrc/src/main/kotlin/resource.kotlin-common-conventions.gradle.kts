@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.mmolosay.resource"
-version = "1.1.3"
+version = "1.0.0"
 
 repositories {
     mavenCentral()
