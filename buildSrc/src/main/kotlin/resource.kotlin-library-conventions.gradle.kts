@@ -10,7 +10,7 @@ kotlin {
     explicitApi = ExplicitApiMode.Strict
 }
 
-configure<PublishingExtension> {
+publishing {
     publications {
         create<MavenPublication>("maven") {
             groupId = project.group.toString()

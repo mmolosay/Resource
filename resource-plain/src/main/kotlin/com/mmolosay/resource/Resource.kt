@@ -62,13 +62,9 @@ public sealed class Resource<out V> {
     /**
      * Represents failure, occurred while obtaining data.
      *
-     * @param cause [Throwable] caught.
-     * @param payload some useful data, like int code or string message.
+     * @param cause [Exception] caught.
      */
-    public class Failure<out P>(
-        public val cause: Throwable,
-        public val payload: P? = null
-    ) : Resource<Nothing>()
+    public class Failure(public val cause: Exception) : Resource<Nothing>()
 
     public companion object
 }
