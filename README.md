@@ -73,8 +73,6 @@ extension function instead of `when` expression.*
 
 `com.github.mmolosay.resource:resource-context:VERSION`
 
-**It is a preferred artifact of `Resource` library to use.**
-
 Philosophy of this artifact allows you to customize a context, in which your `Resource` states will
 change. 
 
